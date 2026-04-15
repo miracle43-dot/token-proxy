@@ -13,7 +13,7 @@
           <a href="#pricing" class="nav-link">定价</a>
           <a href="#" class="nav-link">文档</a>
           <a href="/auth/login" class="nav-link">登录</a>
-          <a href="/auth/register" class="btn-primary">立即开始 →</a>
+          <a href="/auth/register" class="btn-primary">免费注册，送 ¥10 体验金 →</a>
         </nav>
         <button class="hamburger" @click="menuOpen = !menuOpen" :class="{ open: menuOpen }">
           <span></span><span></span><span></span>
@@ -34,9 +34,9 @@
         <div class="hero-left">
           <div class="hero-pretitle">// 无需翻墙，接入全球 AI 模型</div>
           <h1 class="hero-title">3 步接入<br />GPT-4 / Claude / Gemini</h1>
-          <p class="hero-sub">一个 API Key，访问所有主流大模型。<br />稳定、简单、无隐藏费用。</p>
+          <p class="hero-sub">一个 API Key，访问所有主流大模型。<br /><strong>GPT-4o 官方价 8 折</strong>，稳定、简单、无隐藏费用。</p>
           <div class="hero-actions">
-            <a href="/auth/register" class="btn-primary btn-lg">立即开始 →</a>
+            <a href="/auth/register" class="btn-primary btn-lg">免费注册，送 ¥10 体验金 →</a>
             <a href="#quickstart" class="btn-ghost btn-lg">查看文档</a>
           </div>
         </div>
@@ -83,6 +83,19 @@
           <div class="proof-number">{{ item.number }}</div>
           <div class="proof-label">{{ item.label }}</div>
         </div>
+        <div class="proof-item proof-item-payment">
+          <div class="proof-payment-icons">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="6" fill="#07C160"/>
+              <path d="M8 14.5c0-2.5 2-4.5 4.5-4.5S17 12 17 14.5c0 2-1.5 3.5-3.5 3.5h-1v-4h1c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2H9c0 2.5 2 4.5 4.5 4.5S18 17 18 14.5 16 10 13.5 10 9 12 9 14.5" fill="white"/>
+            </svg>
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="6" fill="#1677FF"/>
+              <path d="M8 10.5h8a3 3 0 0 1 0 6H8m0 0h8a3 3 0 0 1 0 6H8" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="proof-label">支持微信 / 支付宝</div>
+        </div>
       </div>
     </section>
 
@@ -103,7 +116,7 @@
     <!-- ===================== Playground ===================== -->
     <section class="playground" id="playground">
       <div class="section-inner">
-        <h2 class="section-title">Playground<br /><span class="title-sub">在线调试，所见即所得</span></h2>
+        <h2 class="section-title">Playground<br /><span class="title-sub">选择一个模型，输入问题，立即获得 AI 回答</span></h2>
         <div class="mac-window pg-window">
           <div class="mac-titlebar">
             <div class="mac-dots">
@@ -174,8 +187,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="row in pricingRows" :key="row.model">
-                <td class="td-model">{{ row.model }}</td>
+              <tr v-for="row in pricingRows" :key="row.model" :class="{ 'tr-recommended': row.recommended }">
+                <td class="td-model">
+                  <span v-if="row.recommended" class="recommended-badge">推荐</span>
+                  {{ row.model }}
+                </td>
                 <td>{{ row.input }}</td>
                 <td>{{ row.output }}</td>
                 <td><span class="tag">{{ row.tag }}</span></td>
@@ -232,8 +248,8 @@
     <section class="footer-cta">
       <div class="cta-inner">
         <h2 class="cta-title">立即开始</h2>
-        <p class="cta-sub">无需信用卡，注册即送 $5 体验金</p>
-        <a href="/auth/register" class="btn-primary btn-xl">立即开始 →</a>
+        <p class="cta-sub">首发体验官招募中 · 注册送 ¥10</p>
+        <a href="/auth/register" class="btn-primary btn-xl">免费注册，送 ¥10 体验金 →</a>
       </div>
     </section>
 
@@ -273,9 +289,9 @@ function toggleFaq(i) {
 }
 
 const proofItems = [
-  { number: '12,000+', label: '已服务开发者' },
-  { number: '1.2 亿', label: 'API 调用' },
-  { number: '180 天', label: '稳定运行' },
+  { number: '12,000+', label: '活跃开发者' },
+  { number: '1.2 亿次/月', label: 'API 调用' },
+  { number: '99.9%', label: 'SLA 可用率' },
   { number: '15+', label: '支持模型' },
 ]
 
@@ -299,7 +315,7 @@ const features = [
 
 const pricingRows = [
   { model: 'GPT-4o', input: '$2.50 / M tokens', output: '$10.00 / M tokens', tag: '官方 8 折' },
-  { model: 'GPT-4o-mini', input: '$0.15 / M tokens', output: '$0.60 / M tokens', tag: '官方 8 折' },
+  { model: 'GPT-4o-mini', input: '$0.15 / M tokens', output: '$0.60 / M tokens', tag: '推荐 · 官方 8 折', recommended: true },
   { model: 'Claude 3.5 Sonnet', input: '$3.00 / M tokens', output: '$15.00 / M tokens', tag: '官方 9 折' },
   { model: 'Claude 3.5 Haiku', input: '$0.80 / M tokens', output: '$4.00 / M tokens', tag: '官方 9 折' },
   { model: 'Gemini 1.5 Pro', input: '$1.25 / M tokens', output: '$5.00 / M tokens', tag: '官方 9 折' },
@@ -477,11 +493,13 @@ a { text-decoration: none; color: inherit; }
 
 /* ==================== Social Proof Bar ==================== */
 .proof-bar { background: var(--bg-subtle); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 48px 64px; }
-.proof-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+.proof-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); }
 .proof-item { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 0 24px; border-right: 1px solid var(--border); }
 .proof-item:last-child { border-right: none; }
 .proof-number { font-size: 48px; font-weight: 700; color: var(--text); font-family: var(--font-mono); letter-spacing: -1px; }
 .proof-label { font-size: 14px; color: var(--text-muted); }
+.proof-item-payment { border-right: none !important; }
+.proof-payment-icons { display: flex; gap: 8px; align-items: center; justify-content: center; }
 
 /* ==================== Section Shared ==================== */
 .section-inner { max-width: 1280px; margin: 0 auto; padding: 0 64px; }
@@ -533,6 +551,20 @@ a { text-decoration: none; color: inherit; }
 .price-table td { padding: 16px 24px; font-size: 14px; color: var(--text-sec); border-bottom: 1px solid var(--border); }
 .price-table tr:last-child td { border-bottom: none; }
 .price-table tr:hover td { background: #FAFAFA; }
+.tr-recommended td { background: #FAF5FF; }
+.tr-recommended:hover td { background: #EDE9FE !important; }
+.recommended-badge {
+  display: inline-block;
+  background: var(--purple);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 6px;
+  vertical-align: middle;
+  letter-spacing: 0.03em;
+}
 .td-model { font-weight: 500; color: var(--text) !important; }
 .tag { background: #F0FDF4; color: #16A34A; font-size: 12px; padding: 4px 8px; border-radius: 4px; font-weight: 500; }
 
@@ -584,10 +616,11 @@ a { text-decoration: none; color: inherit; }
   .hero-title { font-size: 56px; }
   .proof-bar { padding: 40px 48px; }
   .section-inner { padding: 0 48px; }
-  .proof-inner { grid-template-columns: repeat(2, 1fr); row-gap: 32px; }
-  .proof-item:nth-child(2) { border-right: none; }
-  .proof-item:nth-child(3) { border-right: 1px solid var(--border); }
-  .proof-item:nth-child(3), .proof-item:nth-child(4) { border-top: 1px solid var(--border); }
+  .proof-inner { grid-template-columns: repeat(3, 1fr); row-gap: 32px; }
+  .proof-item:nth-child(2) { border-right: 1px solid var(--border); }
+  .proof-item:nth-child(3) { border-right: none; }
+  .proof-item:nth-child(3), .proof-item:nth-child(4), .proof-item:nth-child(5) { border-top: 1px solid var(--border); }
+  .proof-item:nth-child(5) { border-right: none; }
   .pg-body { grid-template-columns: 1fr; }
   .pg-sidebar { flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid #27272A; }
   .pg-sidebar-section { flex-direction: row; flex-wrap: wrap; gap: 8px; align-items: center; }
@@ -629,6 +662,7 @@ a { text-decoration: none; color: inherit; }
   .proof-inner { grid-template-columns: repeat(2, 1fr); }
   .proof-item { border-right: none !important; border-top: 1px solid var(--border) !important; }
   .proof-item:nth-child(1), .proof-item:nth-child(2) { border-top: none !important; }
+  .proof-item:nth-child(5) { border-right: none !important; }
   .footer-cols { grid-template-columns: 1fr; }
 }
 </style>
