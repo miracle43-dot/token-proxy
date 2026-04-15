@@ -43,10 +43,10 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-app.use(express.static(join(__dirname, '../client/dist')));
+app.use(express.static(join(__dirname, '../frontend/dist')));
 app.get('*', (req, res) => {
   if (!req.path.startsWith('/api') && !req.path.startsWith('/v1')) {
-    res.sendFile(join(__dirname, '../client/dist/index.html'));
+    res.sendFile(join(__dirname, '../frontend/dist/index.html'));
   }
 });
 

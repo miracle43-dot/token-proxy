@@ -10,7 +10,7 @@ WORKDIR /app/server
 RUN npm install
 
 # 安装前端依赖并构建
-WORKDIR /app/client
+WORKDIR /app/frontend
 RUN npm install && npm run build
 
 # 返回项目根目录
