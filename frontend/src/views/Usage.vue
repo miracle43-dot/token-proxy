@@ -1,16 +1,16 @@
 <template>
   <div>
-    <el-card>
+    <el-card class="dark-card">
       <template #header>
         <div style="display:flex;justify-content:space-between;align-items:center">
-          <span>用量明细</span>
-          <el-select v-model="filterModel" placeholder="筛选模型" clearable style="width:200px" @change="fetchUsage">
+          <span class="card-title">用量明细</span>
+          <el-select v-model="filterModel" placeholder="筛选模型" clearable style="width:200px" class="dark-select" @change="fetchUsage">
             <el-option v-for="m in models" :key="m.model_id" :label="m.name" :value="m.model_id" />
           </el-select>
         </div>
       </template>
 
-      <el-table :data="rows" stripe v-loading="loading" :pagination="true">
+      <el-table :data="rows" class="dark-table" stripe v-loading="loading">
         <el-table-column prop="request_time" label="时间" width="170">
           <template #default="{ row }">
             {{ row.request_time?.slice(0, 19).replace('T', ' ') }}
@@ -80,3 +80,73 @@ async function fetchModels() {
 
 onMounted(() => { fetchUsage(); fetchModels(); });
 </script>
+
+<style scoped>
+.card-title {
+  font-weight: 600;
+  font-size: var(--text-base);
+  color: var(--text-primary);
+}
+
+.dark-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+:deep(.dark-card .el-card__header) {
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 16px 20px;
+}
+
+:deep(.dark-card .el-card__body) {
+  padding: 20px;
+}
+
+:deep(.dark-table) {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+:deep(.dark-table .el-table__header-wrapper th) {
+  background: var(--bg-elevated) !important;
+  color: var(--text-secondary);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-default) !important;
+}
+
+:deep(.dark-table .el-table__body-wrapper tr) {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+:deep(.dark-table .el-table__row:hover > td) {
+  background: var(--bg-elevated) !important;
+}
+
+:deep(.dark-table td) {
+  border-bottom: 1px solid var(--border-subtle) !important;
+}
+
+:deep(.el-pagination) {
+  color: var(--text-secondary);
+}
+
+:deep(.el-pagination button) {
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+}
+
+:deep(.el-pager li) {
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+}
+
+:deep(.el-pager li.is-active) {
+  color: var(--brand-primary);
+}
+
+:deep(.el-loading-mask) {
+  background: rgba(10, 10, 15, 0.7);
+}
+</style>

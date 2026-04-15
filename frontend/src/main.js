@@ -8,9 +8,13 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 import App from './App.vue';
 import router from './router/index.js';
 
+// Global styles — order matters: variables first, then common
+import './styles/element-variables.scss';
+import './styles/common.scss';
+
 const app = createApp(App);
 
-// 注册所有图标
+// Register all icons
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component);
 }

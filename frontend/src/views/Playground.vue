@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-alert type="info" :closable="false" style="margin-bottom:16px">
+    <el-alert type="info" :closable="false" class="dark-alert" style="margin-bottom:16px">
       <template #title>API 调试台</template>
       <template #default>
         选择模型、输入消息，即可调用 AI。调用会从您的余额中扣除费用。
@@ -10,11 +10,11 @@
     <el-row :gutter="16">
       <!-- 左侧：配置和消息 -->
       <el-col :span="16">
-        <el-card style="margin-bottom:16px">
+        <el-card class="dark-card" style="margin-bottom:16px">
           <template #header>
             <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-              <span style="font-weight:600">模型</span>
-              <el-select v-model="config.model" style="width:220px" placeholder="选择模型">
+              <span class="card-title">模型</span>
+              <el-select v-model="config.model" style="width:220px" placeholder="选择模型" class="dark-select">
                 <el-option v-for="m in models" :key="m.model_id" :label="`${m.name} (${m.model_id})`" :value="m.model_id" />
               </el-select>
               <el-checkbox v-model="config.stream" label="流式输出 (stream)" />
@@ -42,9 +42,10 @@
               placeholder="输入你的问题... (Shift+Enter 换行，Enter 发送)"
               @keydown.enter.exact.prevent="sendMessage"
               :disabled="loading"
+              class="dark-textarea"
             />
             <div style="margin-top:8px;display:flex;justify-content:space-between;align-items:center">
-              <span style="font-size:12px;color:#888">
+              <span class="hint-text">
                 {{ loading ? 'AI 正在思考...' : 'Enter 发送，Shift+Enter 换行' }}
               </span>
               <el-button type="primary" :loading="loading" @click="sendMessage" :disabled="!userInput.trim()">
@@ -57,9 +58,9 @@
 
       <!-- 右侧：参数配置 -->
       <el-col :span="8">
-        <el-card style="margin-bottom:16px">
-          <template #header><span>请求参数</span></template>
-          <el-form label-width="80px" size="small">
+        <el-card class="dark-card" style="margin-bottom:16px">
+          <template #header><span class="card-title">请求参数</span></template>
+          <el-form label-width="80px" size="small" class="params-form">
             <el-form-item label="Temperature">
               <el-slider v-model="config.temperature" :min="0" :max="2" :step="0.1" show-input />
             </el-form-item>
@@ -76,9 +77,9 @@
         </el-card>
 
         <!-- 费用预估 -->
-        <el-card>
-          <template #header><span>本次请求预估</span></template>
-          <el-descriptions :column="1" size="small" border>
+        <el-card class="dark-card">
+          <template #header><span class="card-title">本次请求预估</span></template>
+          <el-descriptions :column="1" size="small" border class="dark-descriptions">
             <el-descriptions-item label="模型">{{ config.model }}</el-descriptions-item>
             <el-descriptions-item label="历史 Tokens">
               ~{{ totalTokens.toLocaleString() }}
@@ -88,12 +89,12 @@
             </el-descriptions-item>
           </el-descriptions>
 
-          <el-divider />
+          <el-divider class="dark-divider" />
 
-          <h4>使用你的 API Key</h4>
-          <p style="font-size:13px;color:#666;line-height:1.6">
+          <h4 class="sdk-title">使用你的 API Key</h4>
+          <p class="sdk-desc">
             在代码中调用，将 baseURL 替换为：
-            <code style="background:#f5f5f5;padding:2px 4px;border-radius:3px">{{ apiBaseUrl }}</code>
+            <code class="inline-code">{{ apiBaseUrl }}</code>
           </p>
         </el-card>
       </el-col>
@@ -178,7 +179,6 @@ async function sendMessage() {
 
   try {
     if (config.value.stream) {
-      // 流式响应
       const response = await fetch('/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -224,7 +224,6 @@ async function sendMessage() {
         }
       }
     } else {
-      // 非流式
       const { data } = await api.post('/chat/completions', body, {
         baseURL: '/v1',
         headers: { Authorization: `Bearer ${token}` },
@@ -237,7 +236,7 @@ async function sendMessage() {
     }
   } catch (err) {
     ElMessage.error(err.response?.data?.error?.message || err.message || '调用失败');
-    messages.value.pop(); // 移除 user message
+    messages.value.pop();
   } finally {
     loading.value = false;
   }
@@ -255,36 +254,156 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.card-title {
+  font-weight: 600;
+  font-size: var(--text-base);
+  color: var(--text-primary);
+}
+
+.dark-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+:deep(.dark-card .el-card__header) {
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 16px 20px;
+}
+
+:deep(.dark-card .el-card__body) {
+  padding: 20px;
+}
+
+/* Alert */
+.dark-alert {
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+:deep(.dark-alert .el-alert__title) {
+  color: var(--text-primary);
+}
+
+:deep(.dark-alert .el-alert__description) {
+  color: var(--text-secondary);
+}
+
+/* Messages */
 .messages {
   max-height: 400px;
   overflow-y: auto;
   margin-bottom: 16px;
   padding: 8px 0;
 }
+
 .message {
   display: flex;
   gap: 12px;
   margin-bottom: 16px;
   align-items: flex-start;
 }
+
 .msg-role {
   min-width: 40px;
-  font-size: 12px;
+  font-size: var(--text-xs);
   font-weight: 600;
-  color: #888;
+  color: var(--text-secondary);
   padding-top: 2px;
 }
+
 .msg-content {
   flex: 1;
-  background: #f5f5f5;
+  background: var(--bg-elevated);
   padding: 10px 14px;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   white-space: pre-wrap;
-  font-size: 14px;
+  font-size: var(--text-base);
   line-height: 1.6;
   max-width: 85%;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
 }
+
 .message.user { flex-direction: row-reverse; }
-.message.user .msg-content { background: #e8f0fe; }
-.message.assistant .msg-content { background: #f0f0f0; }
+
+.message.user .msg-content {
+  background: rgba(124, 58, 237, 0.12);
+  border-color: rgba(124, 58, 237, 0.2);
+}
+
+.hint-text {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+}
+
+/* Params Form */
+.params-form :deep(.el-form-item__label) {
+  color: var(--text-secondary);
+}
+
+/* Descriptions */
+.dark-descriptions :deep(.el-descriptions__label) {
+  background: var(--bg-elevated) !important;
+  color: var(--text-secondary);
+  border-color: var(--border-subtle);
+}
+
+.dark-descriptions :deep(.el-descriptions__content) {
+  background: var(--bg-base) !important;
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+
+.dark-divider {
+  border-color: var(--border-subtle);
+}
+
+.sdk-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.sdk-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.inline-code {
+  background: var(--key-bg);
+  color: var(--key-visible);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  border: 1px solid var(--key-border);
+}
+</style>
+
+<style>
+/* Global dark textarea (not scoped, for element-plus textarea) */
+.dark-textarea .el-textarea__inner {
+  background: var(--bg-elevated);
+  border-color: var(--border-default);
+  color: var(--text-primary);
+  resize: none;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.dark-textarea .el-textarea__inner:hover {
+  border-color: var(--border-strong);
+}
+
+.dark-textarea .el-textarea__inner:focus {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15) !important;
+}
+
+.dark-textarea .el-textarea__inner::placeholder {
+  color: var(--text-tertiary);
+}
 </style>

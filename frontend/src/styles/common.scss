@@ -1,0 +1,117 @@
+// ============================================================
+// TokenProxy - Global Common Styles
+// ============================================================
+
+@import './variables.scss';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-sans);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  min-height: 100vh;
+  background: var(--bg-base);
+}
+
+// ============================================================
+// Custom Scrollbar
+// ============================================================
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+// ============================================================
+// Text Selection
+// ============================================================
+::selection {
+  background: rgba(124, 58, 237, 0.3);
+  color: var(--text-primary);
+}
+
+// ============================================================
+// Focus Styles
+// ============================================================
+:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+// ============================================================
+// Smooth Scroll
+// ============================================================
+html {
+  scroll-behavior: smooth;
+}
+
+// ============================================================
+// Code / Monospace
+// ============================================================
+code, pre, .mono {
+  font-family: var(--font-mono);
+}
+
+// ============================================================
+// Utility Classes
+// ============================================================
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+.text-brand { color: var(--brand-primary); }
+.text-success { color: var(--color-success); }
+.text-warning { color: var(--color-warning); }
+.text-error { color: var(--color-error); }
+.text-info { color: var(--color-info); }
+
+.bg-base { background: var(--bg-base); }
+.bg-surface { background: var(--bg-surface); }
+.bg-elevated { background: var(--bg-elevated); }
+
+// ============================================================
+// Light Mode Scrollbar
+// ============================================================
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: var(--bg-surface);
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+// ============================================================
+// Theme Toggle Button (layout sidebar)
+// ============================================================
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+.theme-toggle-btn:hover {
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+  background: rgba(124, 58, 237, 0.06);
+}

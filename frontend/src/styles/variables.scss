@@ -1,0 +1,158 @@
+// ============================================================
+// TokenProxy Design System - CSS Variables
+// Based on BRAND.md v1.0
+// ============================================================
+
+// --- Brand Primary ---
+$brand-primary: #7C3AED;
+$brand-primary-light: #8B5CF6;
+$brand-primary-dark: #6D28D9;
+$brand-gradient-start: #7C3AED;
+$brand-gradient-end: #4F46E5;
+
+// --- Semantic Colors (Dark Mode - Default) ---
+$color-success: #10B981;
+$color-warning: #F59E0B;
+$color-error: #EF4444;
+$color-info: #3B82F6;
+
+// --- Background Layers (Dark Mode) ---
+$bg-base: #0A0A0F;
+$bg-surface: #111118;
+$bg-elevated: #1C1C26;
+$bg-overlay: #252530;
+
+// --- Border Layers ---
+$border-subtle: #1E1E2A;
+$border-default: #2A2A3A;
+$border-strong: #3D3D52;
+
+// --- Text Layers ---
+$text-primary: #F5F5F7;
+$text-secondary: #9898A6;
+$text-tertiary: #5C5C6E;
+$text-inverse: #0A0A0F;
+
+// --- Key Display Colors ---
+$key-masked: #6B6B8D;
+$key-visible: #A5B4FC;
+$key-bg: #1C1C2E;
+$key-border: #2E2E45;
+
+// ============================================================
+// CSS Custom Properties (for use in components)
+// ============================================================
+:root {
+  // Brand
+  --brand-primary: #{$brand-primary};
+  --brand-primary-light: #{$brand-primary-light};
+  --brand-primary-dark: #{$brand-primary-dark};
+  --brand-gradient: linear-gradient(135deg, #{$brand-gradient-start} 0%, #{$brand-gradient-end} 100%);
+
+  // Semantic
+  --color-success: #{$color-success};
+  --color-warning: #{$color-warning};
+  --color-error: #{$color-error};
+  --color-info: #{$color-info};
+
+  // Background (Dark Mode Default)
+  --bg-base: #{$bg-base};
+  --bg-surface: #{$bg-surface};
+  --bg-elevated: #{$bg-elevated};
+  --bg-overlay: #{$bg-overlay};
+
+  // Borders
+  --border-subtle: #{$border-subtle};
+  --border-default: #{$border-default};
+  --border-strong: #{$border-strong};
+
+  // Text
+  --text-primary: #{$text-primary};
+  --text-secondary: #{$text-secondary};
+  --text-tertiary: #{$text-tertiary};
+  --text-inverse: #{$text-inverse};
+
+  // Key Display
+  --key-masked: #{$key-masked};
+  --key-visible: #{$key-visible};
+  --key-bg: #{$key-bg};
+  --key-border: #{$key-border};
+
+  // Spacing
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  // Border Radius
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  // Shadows
+  --shadow-dark-1: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-dark-2: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-dark-glow: 0 0 20px rgba(124, 58, 237, 0.3);
+
+  // Light Mode
+  --shadow-light-1: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-light-2: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-light-3: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+
+  // Transitions
+  --duration-fast: 100ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  // Typography
+  --font-sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --text-xs: 11px;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-md: 15px;
+  --text-lg: 16px;
+  --text-xl: 18px;
+  --text-2xl: 22px;
+  --text-3xl: 28px;
+  --text-4xl: 36px;
+}
+
+// ============================================================
+// Light Mode Variables
+// ============================================================
+[data-theme="light"] {
+  --bg-base: #FFFFFF;
+  --bg-surface: #F9FAFB;
+  --bg-elevated: #FFFFFF;
+  --bg-overlay: #FFFFFF;
+  --border-subtle: #F3F4F6;
+  --border-default: #E5E7EB;
+  --border-strong: #D1D5DB;
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --text-tertiary: #9CA3AF;
+  --text-inverse: #FFFFFF;
+  --color-success: #059669;
+  --color-warning: #D97706;
+  --color-error: #DC2626;
+  --color-info: #2563EB;
+  --shadow-1: var(--shadow-light-1);
+  --shadow-2: var(--shadow-light-2);
+  --shadow-3: var(--shadow-light-3);
+  --shadow-dark-glow: 0 0 0 transparent;
+}

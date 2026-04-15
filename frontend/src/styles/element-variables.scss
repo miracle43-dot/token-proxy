@@ -1,0 +1,142 @@
+// ============================================================
+// TokenProxy - Element Plus Theme Overrides
+// ============================================================
+
+// Brand Primary
+$--colors-primary: (
+  "primary": (
+    "base": #7C3AED
+  ),
+  "success": (
+    "base": #10B981
+  ),
+  "warning": (
+    "base": #F59E0B
+  ),
+  "danger": (
+    "base": #EF4444
+  ),
+  "error": (
+    "base": #EF4444
+  ),
+  "info": (
+    "base": #3B82F6
+  )
+);
+
+// We override via CSS variables for Element Plus
+:root {
+  // Primary
+  --el-color-primary: #7C3AED;
+  --el-color-primary-light-3: #9B6DF6;
+  --el-color-primary-light-5: #B194F8;
+  --el-color-primary-light-7: #C9BBFA;
+  --el-color-primary-light-8: #D9CCFD;
+  --el-color-primary-light-9: #E9DDFE;
+  --el-color-primary-dark-2: #6D28D9;
+
+  // Success
+  --el-color-success: #10B981;
+  --el-color-success-light-3: #3CB88E;
+  --el-color-success-light-5: #5BC9A2;
+  --el-color-success-light-7: #7FD9B6;
+  --el-color-success-light-8: #9AE4C8;
+  --el-color-success-light-9: #B5EFDA;
+  --el-color-success-dark-2: #059669;
+
+  // Warning
+  --el-color-warning: #F59E0B;
+  --el-color-warning-light-3: #D9901F;
+  --el-color-warning-light-5: #E5A832;
+  --el-color-warning-light-7: #EDC045;
+  --el-color-warning-light-8: #F1CE67;
+  --el-color-warning-light-9: #F5DC89;
+  --el-color-warning-dark-2: #B37708;
+
+  // Danger / Error
+  --el-color-danger: #EF4444;
+  --el-color-danger-light-3: #E86A6A;
+  --el-color-danger-light-5: #ED8A8A;
+  --el-color-danger-light-7: #F2AAAA;
+  --el-color-danger-light-8: #F5C0C0;
+  --el-color-danger-light-9: #F9D5D5;
+  --el-color-danger-dark-2: #C53030;
+
+  // Error (alias)
+  --el-color-error: #EF4444;
+
+  // Info
+  --el-color-info: #3B82F6;
+  --el-color-info-light-3: #5A9AF7;
+  --el-color-info-light-5: #76ADF8;
+  --el-color-info-light-7: #92C0F9;
+  --el-color-info-light-8: #AED1FA;
+  --el-color-info-light-9: #CAE2FB;
+  --el-color-info-dark-2: #1D5FC5;
+
+  // Text
+  --el-text-color-primary: #F5F5F7;
+  --el-text-color-regular: #9898A6;
+  --el-text-color-secondary: #9898A6;
+  --el-text-color-placeholder: #5C5C6E;
+  --el-text-color-disabled: #5C5C6E;
+
+  // Background
+  --el-bg-color: #111118;
+  --el-bg-color-page: #0A0A0F;
+  --el-bg-color-overlay: #1C1C26;
+
+  // Border
+  --el-border-color: #2A2A3A;
+  --el-border-color-light: #1E1E2A;
+  --el-border-color-lighter: #1E1E2A;
+  --el-border-color-extra-light: #1E1E2A;
+  --el-border-color-dark: #3D3D52;
+  --el-border-color-darker: #3D3D52;
+
+  // Fill
+  --el-fill-color: #1C1C26;
+  --el-fill-color-light: #1C1C26;
+  --el-fill-color-lighter: #252530;
+  --el-fill-color-extra-light: #252530;
+  --el-fill-color-dark: #111118;
+  --el-fill-color-darker: #111118;
+  --el-fill-color-blank: #111118;
+
+  // Box Shadow
+  --el-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --el-box-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --el-box-shadow-lighter: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --el-box-shadow-dark: 0 10px 20px rgba(0, 0, 0, 0.6);
+
+  // Font
+  --el-font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --el-font-size-base: 14px;
+
+  // Border Radius
+  --el-border-radius-base: 8px;
+  --el-border-radius-small: 6px;
+  --el-border-radius-round: 8px;
+  --el-border-radius-circle: 50%;
+
+  // Component-specific
+  --el-menu-bg-color: transparent;
+  --el-menu-text-color: #9898A6;
+  --el-menu-hover-bg-color: rgba(124, 58, 237, 0.1);
+  --el-menu-active-color: #7C3AED;
+  --el-menu-item-height: 48px;
+
+  --el-dialog-bg-color: #1C1C26;
+  --el-dialog-title-font-size: 16px;
+
+  --el-card-bg-color: #111118;
+  --el-card-border-color: #2A2A3A;
+
+  --el-input-bg-color: #1C1C26;
+  --el-input-border-color: #2A2A3A;
+  --el-input-hover-border-color: #7C3AED;
+  --el-input-focus-border-color: #7C3AED;
+
+  --el-button-hover-bg-color: rgba(124, 58, 237, 0.1);
+  --el-button-hover-border-color: #7C3AED;
+}
