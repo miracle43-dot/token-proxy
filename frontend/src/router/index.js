@@ -5,6 +5,10 @@ const routes = [
   // Public landing page
   {
     path: '/',
+    redirect: '/home',
+  },
+  {
+    path: '/home',
     name: 'Landing',
     component: () => import('../views/Landing.vue'),
   },
