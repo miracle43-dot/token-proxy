@@ -1,73 +1,77 @@
 <template>
   <div class="landing">
     <!-- ===================== Navigation Bar ===================== -->
-    <header class="nav-bar" :class="{ scrolled: isScrolled }">
+    <header class="nav" :class="{ scrolled: isScrolled }">
       <div class="nav-inner">
-        <div class="nav-logo">
-          <span class="logo-icon">⚡</span>
+        <a href="/" class="nav-logo">
+          <span class="logo-dot"></span>
           <span class="logo-text">TokenProxy</span>
-        </div>
+        </a>
         <nav class="nav-links" :class="{ open: menuOpen }">
-          <a href="#features" class="nav-link" @click="menuOpen = false">Features</a>
-          <a href="#pricing" class="nav-link" @click="menuOpen = false">Pricing</a>
-          <a href="#quickstart" class="nav-link" @click="menuOpen = false">Docs</a>
+          <a href="#features" class="nav-link" @click="menuOpen = false">功能</a>
+          <a href="#pricing" class="nav-link" @click="menuOpen = false">定价</a>
+          <a href="#quickstart" class="nav-link" @click="menuOpen = false">快速开始</a>
           <a href="#faq" class="nav-link" @click="menuOpen = false">FAQ</a>
-          <a href="/auth/login" class="nav-link nav-signin" @click="menuOpen = false">Sign In</a>
-          <a href="/auth/register" class="btn-primary nav-cta" @click="menuOpen = false">Get Started ▶</a>
+          <a href="/auth/login" class="nav-link nav-signin" @click="menuOpen = false">登录</a>
+          <a href="/auth/register" class="btn-primary nav-cta" @click="menuOpen = false">开始使用 →</a>
         </nav>
-        <button class="hamburger" @click="menuOpen = !menuOpen" :class="{ open: menuOpen }">
+        <button class="hamburger" @click="menuOpen = !menuOpen" :class="{ open: menuOpen }" aria-label="菜单">
           <span></span><span></span><span></span>
         </button>
       </div>
     </header>
 
-    <!-- ===================== Hero Section ===================== -->
+    <!-- ===================== Hero ===================== -->
     <section class="hero">
-      <div class="hero-glow"></div>
       <div class="hero-inner">
-        <div class="hero-content">
+        <div class="hero-text">
+          <div class="hero-pretitle">// AI API Proxy — No VPN Required</div>
           <h1 class="hero-title">
-            让 AI 调用<br />像呼吸一样简单
+            Build Faster.<br />Ship Without Limits.
           </h1>
           <p class="hero-sub">
-            无需翻墙、稳定快速、按量计费——一个 API Key，<br class="br-desktop" />
-            连接 OpenAI · Claude · Gemini 全模型
+            One API key. Access OpenAI, Claude &amp; Gemini —<br class="br-desktop" />
+            from China, without compromise.
           </p>
           <div class="hero-actions">
-            <a href="/auth/register" class="btn-primary btn-lg">Get Started Free ▶</a>
-            <a href="#pricing" class="btn-secondary btn-lg">View Pricing ↓</a>
+            <a href="/auth/register" class="btn-primary btn-lg">开始使用 →</a>
+            <a href="#quickstart" class="btn-outline btn-lg">查看文档</a>
           </div>
         </div>
-        <div class="hero-screenshot">
-          <div class="window-chrome">
-            <span class="dot dot-red"></span>
-            <span class="dot dot-yellow"></span>
-            <span class="dot dot-green"></span>
-            <span class="window-title">TokenProxy Dashboard</span>
-          </div>
-          <div class="terminal">
-            <pre class="terminal-code"><span class="t-keyword">import</span> <span class="t-var">openai</span>
-
-client = openai.<span class="t-fn">OpenAI</span>(
-    api_key=<span class="t-str">"tkp_xxxxxxxxxxxx"</span>,
-    base_url=<span class="t-str">"https://api.tokenproxy.com/v1"</span>
-)
-
-resp = client.chat.completions.<span class="t-fn">create</span>(
-    model=<span class="t-str">"gpt-4o"</span>,
-    messages=[{<span class="t-attr">"role"</span>: <span class="t-str">"user"</span>, <span class="t-attr">"content"</span>: <span class="t-str">"Hello!"</span>}]
-)
-<span class="t-comment"># → 响应时间: 142ms ✓</span></pre>
+        <div class="hero-terminal">
+          <div class="terminal-window">
+            <div class="terminal-titlebar">
+              <span class="t-dot t-red"></span>
+              <span class="t-dot t-yellow"></span>
+              <span class="t-dot t-green"></span>
+              <span class="t-title">TokenProxy Console</span>
+            </div>
+            <div class="terminal-body">
+              <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">pip install tokenproxy-sdk</span></div>
+              <div class="t-line t-muted">─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─</div>
+              <div class="t-line t-success">&gt; connecting...</div>
+              <div class="t-line t-success">&gt; auth ✓</div>
+              <div class="t-line t-success">&gt; ready @ api.tokenproxy.dev</div>
+              <div class="t-line">&nbsp;</div>
+              <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">curl -X POST https://api...</span></div>
+              <div class="t-line t-indent">-H <span class="t-str">"Authorization: Bearer $KEY"</span></div>
+              <div class="t-line t-indent">-H <span class="t-str">"Content-Type: application/json"</span></div>
+              <div class="t-line">&nbsp;</div>
+              <div class="t-line">{ <span class="t-key">"model"</span>: <span class="t-str">"gpt-4o"</span>,</div>
+              <div class="t-line t-indent2"><span class="t-key">"usage"</span>: { <span class="t-key">"tokens"</span>: <span class="t-num">128</span> }</div>
+              <div class="t-line">}</div>
+              <div class="t-cursor-line"><span class="t-cursor">_</span></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ===================== Social Proof ===================== -->
-    <section class="social-proof">
+    <section class="proof">
       <div class="proof-inner">
         <div class="proof-item" v-for="item in proofItems" :key="item.label">
-          <span class="proof-number">{{ item.number }}</span>
+          <span class="proof-num">{{ item.number }}</span>
           <span class="proof-label">{{ item.label }}</span>
         </div>
       </div>
@@ -77,15 +81,79 @@ resp = client.chat.completions.<span class="t-fn">create</span>(
     <section class="features" id="features">
       <div class="section-inner">
         <div class="section-header">
-          <h2 class="section-title">为什么选择 TokenProxy</h2>
+          <h2 class="section-title">Why Developers Choose TokenProxy</h2>
           <p class="section-sub">专为开发者打造的 AI API 代理服务</p>
         </div>
         <div class="features-grid">
           <div class="feature-card" v-for="f in features" :key="f.title">
-            <div class="feature-icon">{{ f.icon }}</div>
+            <div class="feature-icon-wrap">
+              <span class="feature-icon" v-html="f.icon"></span>
+            </div>
             <h3 class="feature-title">{{ f.title }}</h3>
             <p class="feature-desc">{{ f.desc }}</p>
             <p class="feature-sub">{{ f.sub }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Playground ===================== -->
+    <section class="playground" id="playground">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2 class="section-title">Live Playground — Try It Now</h2>
+          <p class="section-sub">一个请求就能验证效果</p>
+        </div>
+        <div class="playground-window">
+          <div class="terminal-titlebar">
+            <span class="t-dot t-red"></span>
+            <span class="t-dot t-yellow"></span>
+            <span class="t-dot t-green"></span>
+            <span class="t-title">api.tokenproxy.dev — Playground</span>
+          </div>
+          <div class="playground-body">
+            <div class="pg-sidebar">
+              <div class="pg-sidebar-title">API Keys</div>
+              <div class="pg-key pg-key-active">
+                <span class="pg-key-dot"></span>
+                <span>key_sk_...7f2a</span>
+              </div>
+              <div class="pg-key">
+                <span class="pg-key-dot pg-key-dot-inactive"></span>
+                <span>key_sk_...3b1c</span>
+              </div>
+              <div class="pg-key">
+                <span class="pg-key-dot pg-key-dot-inactive"></span>
+                <span>key_sk_...9e4d</span>
+              </div>
+              <div class="pg-sidebar-title pg-usage-title">Usage</div>
+              <div class="pg-usage-row">
+                <span class="pg-usage-label">Today</span>
+                <span class="pg-usage-val">12,847</span>
+              </div>
+              <div class="pg-usage-row">
+                <span class="pg-usage-label">Balance</span>
+                <span class="pg-usage-val pg-usage-money">$24.80</span>
+              </div>
+            </div>
+            <div class="pg-main">
+              <div class="pg-model-row">
+                <span class="pg-label">Model:</span>
+                <span class="pg-model-select">GPT-4o <span class="pg-select-arrow">▾</span></span>
+              </div>
+              <div class="pg-divider"></div>
+              <div class="pg-section-label">Request:</div>
+              <div class="pg-code pg-code-req">
+                <span class="t-key">POST</span> /v1/chat/completions<br>
+                Body: { <span class="t-key">"model"</span>: <span class="t-str">"gpt-4o"</span>, ... }
+              </div>
+              <div class="pg-divider"></div>
+              <div class="pg-section-label">Response: <span class="t-success pg-status">200 OK ✓</span></div>
+              <div class="pg-code">
+                ↳ tokens: <span class="t-num">1,247</span> | latency: <span class="t-num">213ms</span><br>
+                ↳ cache hit: <span class="t-success">true</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -95,7 +163,7 @@ resp = client.chat.completions.<span class="t-fn">create</span>(
     <section class="pricing" id="pricing">
       <div class="section-inner">
         <div class="section-header">
-          <h2 class="section-title">透明定价，用多少付多少</h2>
+          <h2 class="section-title">Simple, Transparent Pricing</h2>
           <p class="section-sub">无月费、无最低消费，充值多少用多少</p>
         </div>
         <div class="pricing-grid">
@@ -103,7 +171,6 @@ resp = client.chat.completions.<span class="t-fn">create</span>(
             <div v-if="plan.recommended" class="badge-recommended">推荐</div>
             <div class="plan-name">{{ plan.name }}</div>
             <div class="plan-price">
-              <span v-if="plan.price !== '定制'" class="price-yen">¥</span>
               <span class="price-num">{{ plan.price }}</span>
               <span v-if="plan.priceSuffix" class="price-suffix">{{ plan.priceSuffix }}</span>
             </div>
@@ -116,29 +183,6 @@ resp = client.chat.completions.<span class="t-fn">create</span>(
             </a>
           </div>
         </div>
-
-        <!-- 模型价格表 -->
-        <div class="model-table">
-          <h3 class="model-table-title">热门模型价格</h3>
-          <div class="table-wrapper">
-            <table class="model-pricing-table">
-              <thead>
-                <tr>
-                  <th>模型</th>
-                  <th>输入 (¥/1M Tokens)</th>
-                  <th>输出 (¥/1M Tokens)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="m in modelPrices" :key="m.name">
-                  <td>{{ m.name }}</td>
-                  <td>¥{{ m.input }}</td>
-                  <td>¥{{ m.output }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -146,38 +190,20 @@ resp = client.chat.completions.<span class="t-fn">create</span>(
     <section class="quickstart" id="quickstart">
       <div class="section-inner">
         <div class="section-header">
-          <h2 class="section-title">3 步完成接入</h2>
-          <p class="section-sub">替换一行代码，立即享受国内加速</p>
+          <h2 class="section-title">Up and Running in 60 Seconds</h2>
+          <p class="section-sub">3 步完成接入，零学习成本</p>
         </div>
-        <div class="steps-layout">
-          <div class="steps">
-            <div class="step-item" v-for="(step, i) in steps" :key="i">
-              <div class="step-num">{{ String(i + 1).padStart(2, '0') }}</div>
-              <div class="step-content">
-                <div class="step-icon">{{ step.icon }}</div>
-                <h3 class="step-title">{{ step.title }}</h3>
-                <p class="step-desc">{{ step.desc }}</p>
-              </div>
-              <div v-if="i < steps.length - 1" class="step-arrow">→</div>
+        <div class="steps">
+          <div class="step-item" v-for="(step, i) in steps" :key="i">
+            <div class="step-num">{{ String(i + 1).padStart(2, '0') }}</div>
+            <div class="step-body">
+              <div class="step-icon" v-html="step.icon"></div>
+              <h3 class="step-title">{{ step.title }}</h3>
+              <p class="step-desc">{{ step.desc }}</p>
             </div>
-          </div>
-          <div class="code-block">
-            <div class="code-header">
-              <span class="code-lang">Python</span>
-              <button class="copy-btn" @click="copyCode">Copy</button>
+            <div class="step-code">
+              <pre class="step-code-block"><span class="t-comment">{{ step.codeComment }}</span></pre>
             </div>
-            <pre class="code-body"><span class="t-keyword">import</span> <span class="t-var">openai</span>
-
-client = openai.<span class="t-fn">OpenAI</span>(
-    api_key=<span class="t-str">"tkp_xxxxxxxxxxxx"</span>,  <span class="t-comment"># ← 替换为你的 Key</span>
-    base_url=<span class="t-str">"https://api.tokenproxy.com/v1"</span>  <span class="t-comment"># ← TokenProxy 端点</span>
-)
-
-response = client.chat.completions.<span class="t-fn">create</span>(
-    model=<span class="t-str">"gpt-4o"</span>,
-    messages=[{<span class="t-attr">"role"</span>: <span class="t-str">"user"</span>, <span class="t-attr">"content"</span>: <span class="t-str">"Hello!"</span>}]
-)
-<span class="t-comment"># 响应时间: P99 &lt; 200ms ✓</span></pre>
           </div>
         </div>
       </div>
@@ -187,7 +213,7 @@ response = client.chat.completions.<span class="t-fn">create</span>(
     <section class="faq" id="faq">
       <div class="section-inner">
         <div class="section-header">
-          <h2 class="section-title">常见问题</h2>
+          <h2 class="section-title">Common Questions</h2>
         </div>
         <div class="faq-list">
           <div
@@ -197,11 +223,11 @@ response = client.chat.completions.<span class="t-fn">create</span>(
             :class="{ open: openFaq === i }"
             @click="toggleFaq(i)"
           >
-            <div class="faq-question">
+            <div class="faq-q">
               <span>{{ item.q }}</span>
               <span class="faq-toggle">{{ openFaq === i ? '−' : '+' }}</span>
             </div>
-            <div class="faq-answer" v-show="openFaq === i">{{ item.a }}</div>
+            <div class="faq-a" v-show="openFaq === i">{{ item.a }}</div>
           </div>
         </div>
       </div>
@@ -209,12 +235,10 @@ response = client.chat.completions.<span class="t-fn">create</span>(
 
     <!-- ===================== Footer CTA ===================== -->
     <section class="footer-cta">
-      <div class="cta-glow-left"></div>
-      <div class="cta-glow-right"></div>
       <div class="cta-inner">
-        <h2 class="cta-title">准备好了吗？</h2>
-        <p class="cta-sub">立即开始，无需信用卡</p>
-        <a href="/auth/register" class="btn-primary btn-lg btn-cta">Get Started Free ▶</a>
+        <h2 class="cta-title">Ready to ship?</h2>
+        <p class="cta-sub">注册即送 $5 体验金，无需信用卡</p>
+        <a href="/auth/register" class="btn-primary btn-lg">开始使用 →</a>
       </div>
     </section>
 
@@ -222,16 +246,11 @@ response = client.chat.completions.<span class="t-fn">create</span>(
     <footer class="footer">
       <div class="footer-inner">
         <div class="footer-brand">
-          <div class="footer-logo">
-            <span class="logo-icon">⚡</span>
+          <a href="/" class="footer-logo">
+            <span class="logo-dot"></span>
             <span class="logo-text">TokenProxy</span>
-          </div>
+          </a>
           <p class="footer-tagline">让 AI 调用像呼吸一样简单</p>
-          <div class="footer-socials">
-            <a href="#" class="social-link" title="GitHub">⎔</a>
-            <a href="#" class="social-link" title="Twitter">✕</a>
-            <a href="#" class="social-link" title="微信">💬</a>
-          </div>
         </div>
         <div class="footer-links">
           <div class="footer-col" v-for="col in footerCols" :key="col.title">
@@ -245,11 +264,10 @@ response = client.chat.completions.<span class="t-fn">create</span>(
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 TokenProxy. All rights reserved.</span>
+        <span>© 2026 TokenProxy. Built for developers.</span>
         <div class="footer-legal">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Acceptable Use</a>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
         </div>
       </div>
     </footer>
@@ -272,74 +290,72 @@ const proofItems = [
 
 const features = [
   {
-    icon: '⚡',
-    title: '极速稳定',
-    desc: '全模型专线接入',
-    sub: 'P99 延迟 < 200ms，比官方更快',
+    icon: '&#9889;',
+    title: 'No VPN',
+    desc: '国内直连，无需任何额外网络配置',
+    sub: '替换 endpoint 即可，零门槛接入',
   },
   {
-    icon: '🌐',
-    title: '无需翻墙',
-    desc: '国内直连，零配置',
-    sub: '替换官方 endpoint 即可使用',
+    icon: '&#128274;',
+    title: 'Stable',
+    desc: '99.9% 可用率，多区域智能路由',
+    sub: '自动容灾切换，保障业务连续性',
   },
   {
-    icon: '💰',
-    title: '价格优惠',
-    desc: '比官方更低的价格',
-    sub: '按量计费，无最低消费',
+    icon: '&#128176;',
+    title: 'Clear Pricing',
+    desc: '按量计费无隐藏费用，明码标价',
+    sub: '费用清晰无套路，用多少付多少',
   },
   {
-    icon: '🔧',
-    title: '简单易用',
-    desc: '3 步完成接入',
-    sub: '兼容 OpenAI SDK，零学习成本',
+    icon: '&#128640;',
+    title: 'Instant Access',
+    desc: '注册即用，3秒完成 API Key 获取',
+    sub: '支持 OpenAI SDK，零学习成本',
   },
 ];
 
 const pricingPlans = [
   {
-    name: 'Starter',
-    price: '免费',
-    priceSuffix: '',
+    name: 'Free',
+    price: '$0',
+    priceSuffix: ' / forever',
     desc: '体验全部功能',
     features: [
-      '100 万 tokens 免费额度',
-      '支持全部主流模型',
-      '基础用量统计',
-      '社区支持',
+      '100k tokens / 月',
+      '基础模型支持',
+      '1 个 API Key',
+      'Community support',
     ],
-    cta: '免费开始',
+    cta: '开始使用',
     ctaLink: '/auth/register',
     recommended: false,
   },
   {
     name: 'Pro',
-    price: '99',
-    priceSuffix: '/月',
+    price: '$29',
+    priceSuffix: ' / month',
     desc: '适合个人开发者',
     features: [
-      '1 亿 tokens/月',
-      '全模型通用',
-      'SLA 99.9%',
-      '优先技术支持',
-      '用量详细报表',
+      '10M tokens / 月',
+      '全模型 + 优先队列',
+      '5 个 API Keys',
+      'Email support',
     ],
-    cta: '立即购买',
+    cta: '立即升级',
     ctaLink: '/auth/register',
     recommended: true,
   },
   {
     name: 'Enterprise',
-    price: '定制',
+    price: 'Custom',
     priceSuffix: '',
     desc: '适合企业级用户',
     features: [
-      '不限用量',
-      '私有部署支持',
-      '专属客服',
+      'Unlimited tokens',
       'SLA 99.99%',
-      '定制化功能',
+      '无限制 API Keys',
+      '专属 Slack 支持',
     ],
     cta: '联系我们',
     ctaLink: '/auth/register',
@@ -347,80 +363,67 @@ const pricingPlans = [
   },
 ];
 
-const modelPrices = [
-  { name: 'GPT-4o', input: '8', output: '24' },
-  { name: 'GPT-4o-mini', input: '1.5', output: '6' },
-  { name: 'Claude 3.5 Sonnet', input: '12', output: '36' },
-  { name: 'Gemini 1.5 Pro', input: '8', output: '24' },
-  { name: 'Gemini 2.0 Flash', input: '1', output: '4' },
-];
-
 const steps = [
   {
-    icon: '👤',
     title: '注册账号',
-    desc: '邮箱注册，30秒完成，无需手机号',
+    desc: '免费创建账号，30秒完成，无需信用卡',
+    icon: '&#128100;',
+    codeComment: '# Step 1: Sign up → 打开 tokenproxy.dev，注册账号',
   },
   {
-    icon: '💳',
-    title: '充值余额',
-    desc: '支付宝/微信/银行卡，按量计费',
+    title: '获取 Key',
+    desc: '仪表盘一键生成 API Key，立即生效',
+    icon: '&#128273;',
+    codeComment: '# Step 2: Get your key\n$ curl https://api.tokenproxy.dev/keys \\\n  -H "Authorization: Bearer $YOUR_TOKEN"',
   },
   {
-    icon: '🚀',
     title: '开始调用',
-    desc: '替换 API Base URL，立即使用',
+    desc: '一个请求就能验证效果，用完即充',
+    icon: '&#128640;',
+    codeComment: '# Step 3: Make your first call\n$ curl -X POST https://api.tokenproxy.dev/v1/chat \\\n  -H "Authorization: Bearer sk_live_xxxx" \\\n  -d \'{"model":"gpt-4o","messages":[{"role":"user","content":"Hi"}]}\'',
   },
 ];
 
 const faqItems = [
   {
+    q: 'TokenProxy 和直接调用官方 API 有什么区别？',
+    a: '核心区别是**无需翻墙**。TokenProxy 在中国大陆部署了直连节点，你不需要任何代理工具即可稳定访问 OpenAI/Claude/Gemini。同时我们提供智能路由、自动重试、用量统计，一个平台搞定所有。',
+  },
+  {
+    q: '费用如何计算？是否有隐藏费用？',
+    a: '无隐藏费用。按实际 token 消耗计费，费用与你直接调官方 API 一致（部分模型甚至更低）。Pro 套餐明码标价，无订阅陷阱，随时可取消。',
+  },
+  {
     q: '支持哪些模型？',
-    a: 'OpenAI GPT-4/4o/4o-mini、Claude 3.5/3 Opus、Gemini 1.5/2.0 等，后续持续更新。具体模型列表请参考价格页面。',
-  },
-  {
-    q: '访问速度如何？',
-    a: '全模型专线接入，国内延迟 P99 < 200ms，比官方更快。国内用户无需任何配置即可享受加速。',
-  },
-  {
-    q: '如何计费？',
-    a: '按实际使用的 tokens 数量计费，无月费、无最低消费。费用 = (输入 Tokens × 输入单价 + 输出 Tokens × 输出单价) / 1,000,000。',
-  },
-  {
-    q: '有免费额度吗？',
-    a: '新用户赠送 100 万 tokens 免费额度，可体验全部模型。无需信用卡，直接注册即可领取。',
-  },
-  {
-    q: '数据安全吗？',
-    a: '全程 HTTPS 加密传输，不存储用户对话内容，支持企业私有部署，保障数据主权。',
+    a: '目前支持 OpenAI 全模型（GPT-4o、GPT-4o-mini 等）、Claude 3.5 全系列、Gemini Pro/Flash，后续持续接入新模型。仪表盘实时展示最新可用模型列表。',
   },
 ];
 
 const footerCols = [
   {
-    title: '产品',
+    title: 'Product',
     links: [
-      { label: 'Features', href: '#features' },
-      { label: 'Pricing', href: '#pricing' },
-      { label: 'Changelog', href: '#' },
-      { label: 'Status', href: '#' },
+      { label: '功能介绍', href: '#features' },
+      { label: '定价', href: '#pricing' },
+      { label: '更新日志', href: '#' },
+      { label: '状态页', href: '#' },
     ],
   },
   {
-    title: '资源',
+    title: 'Developers',
     links: [
-      { label: 'Docs', href: '#' },
-      { label: 'API Reference', href: '#' },
-      { label: 'SDK', href: '#' },
+      { label: 'API 文档', href: '#' },
+      { label: 'SDK 下载', href: '#' },
+      { label: '快速开始', href: '#quickstart' },
       { label: 'Blog', href: '#' },
     ],
   },
   {
-    title: '公司',
+    title: 'Company',
     links: [
-      { label: 'About', href: '#' },
-      { label: 'Careers', href: '#' },
-      { label: 'Contact', href: '#' },
+      { label: '关于我们', href: '#' },
+      { label: '联系方式', href: '#' },
+      { label: '隐私政策', href: '#' },
     ],
   },
 ];
@@ -433,21 +436,6 @@ function toggleFaq(i) {
   openFaq.value = openFaq.value === i ? null : i;
 }
 
-function copyCode() {
-  const code = `import openai
-
-client = openai.OpenAI(
-    api_key="tkp_xxxxxxxxxxxx",  # ← 替换为你的 Key
-    base_url="https://api.tokenproxy.com/v1"  # ← TokenProxy 端点
-)
-
-response = client.chat.completions.create(
-    model="gpt-4o",
-    messages=[{"role": "user", "content": "Hello!"}]
-)`;
-  navigator.clipboard.writeText(code).catch(() => {});
-}
-
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true });
 });
@@ -458,32 +446,51 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* ==================== Base ==================== */
+/* ==================== CSS Variables ==================== */
 .landing {
-  background: var(--bg-base, #0A0A0F);
-  color: var(--text-primary, #F5F5F7);
-  font-family: var(--font-sans, 'Inter', 'PingFang SC', sans-serif);
+  --bg: #FFFFFF;
+  --bg-subtle: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-hover: #F1F5F9;
+  --border: #E2E8F0;
+  --border-bright: #CBD5E1;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --purple: #7C3AED;
+  --purple-light: #A78BFA;
+  --purple-dim: #EDE9FE;
+  --green: #22C55E;
+  --red: #EF4444;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Menlo', monospace;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 a { text-decoration: none; color: inherit; }
 
 /* ==================== Nav Bar ==================== */
-.nav-bar {
+.nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  height: 72px;
-  transition: background 200ms ease, box-shadow 200ms ease;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 200ms ease;
 }
 
-.nav-bar.scrolled {
-  background: rgba(15, 15, 26, 0.85);
+.nav.scrolled {
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 rgba(45, 45, 68, 0.6);
+  box-shadow: 0 1px 0 var(--border);
 }
 
 .nav-inner {
@@ -492,8 +499,8 @@ a { text-decoration: none; color: inherit; }
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 24px;
-  gap: 48px;
+  padding: 0 32px;
+  gap: 40px;
 }
 
 .nav-logo {
@@ -503,124 +510,96 @@ a { text-decoration: none; color: inherit; }
   flex-shrink: 0;
 }
 
-.logo-icon { font-size: 20px; }
+.logo-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--purple);
+  display: inline-block;
+  flex-shrink: 0;
+}
 
 .logo-text {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
-  color: var(--brand-primary, #7C3AED);
-  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 8px;
   margin-left: auto;
 }
 
 .nav-link {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
-  color: var(--text-secondary, #9898A6);
-  transition: color 200ms ease;
-  position: relative;
+  color: var(--text-secondary);
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: color 150ms ease, background 150ms ease;
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  right: 50%;
-  height: 2px;
-  background: var(--brand-primary, #7C3AED);
-  transition: left 200ms ease, right 200ms ease;
+.nav-link:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
 }
-
-.nav-link:hover { color: var(--text-primary, #F5F5F7); }
-.nav-link:hover::after { left: 0; right: 0; }
 
 .nav-signin { margin-left: 8px; }
 
 .nav-cta {
-  padding: 10px 20px;
+  padding: 8px 18px;
   font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-left: 8px;
 }
 
 .btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--brand-primary, #7C3AED);
+  background: var(--purple);
   color: #fff;
   border: none;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+  transition: background 150ms ease, transform 80ms ease, box-shadow 150ms ease;
   white-space: nowrap;
 }
 
 .btn-primary:hover {
-  background: var(--brand-primary-light, #8B5CF6);
-  transform: scale(1.02);
-  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.35);
+  background: #6D28D9;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.3);
 }
 
 .btn-primary:active { transform: scale(0.98); }
 
-.btn-secondary {
+.btn-outline {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   background: transparent;
-  color: var(--text-secondary, #9898A6);
-  border: 1px solid var(--border-default, #2A2A3A);
+  color: var(--text-secondary);
+  border: 1.5px solid var(--border-bright);
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 200ms ease;
-}
-
-.btn-secondary:hover {
-  border-color: var(--brand-primary, #7C3AED);
-  color: var(--text-primary, #F5F5F7);
-}
-
-.btn-lg {
-  padding: 16px 32px;
-  font-size: 16px;
-  border-radius: 10px;
-}
-
-.btn-outline {
-  display: block;
-  text-align: center;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 15px;
-  border: 1px solid var(--border-default, #2A2A3A);
-  color: var(--text-secondary, #9898A6);
-  transition: all 200ms ease;
-  background: transparent;
+  transition: border-color 150ms ease, color 150ms ease, background 150ms ease;
 }
 
 .btn-outline:hover {
-  border-color: var(--brand-primary, #7C3AED);
-  color: var(--text-primary, #F5F5F7);
+  border-color: var(--purple);
+  color: var(--purple);
+  background: var(--purple-dim);
 }
 
-.btn-block {
-  display: block;
-  text-align: center;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
+.btn-lg {
+  padding: 14px 28px;
   font-size: 15px;
-  transition: all 200ms ease;
-  margin-top: auto;
 }
 
 .hamburger {
@@ -638,7 +617,7 @@ a { text-decoration: none; color: inherit; }
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--text-primary, #F5F5F7);
+  background: var(--text-primary);
   border-radius: 2px;
   transition: all 200ms ease;
 }
@@ -649,51 +628,43 @@ a { text-decoration: none; color: inherit; }
 
 /* ==================== Hero ==================== */
 .hero {
-  position: relative;
-  padding-top: 140px;
-  padding-bottom: 96px;
-  overflow: hidden;
-}
-
-.hero-glow {
-  position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
-  pointer-events: none;
+  padding-top: 160px;
+  padding-bottom: 120px;
+  background: var(--bg);
 }
 
 .hero-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  flex-direction: column;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
   align-items: center;
-  gap: 64px;
 }
 
-.hero-content {
-  text-align: center;
-  max-width: 720px;
-  animation: fadeInUp 0.6s ease both;
+.hero-pretitle {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--purple);
+  margin-bottom: 20px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .hero-title {
-  font-size: clamp(40px, 6vw, 64px);
+  font-size: clamp(40px, 5vw, 60px);
   font-weight: 800;
-  line-height: 1.1;
-  color: var(--text-primary, #F5F5F7);
+  line-height: 1.08;
+  color: var(--text-primary);
   margin-bottom: 24px;
-  letter-spacing: -1.5px;
+  letter-spacing: -2px;
 }
 
 .hero-sub {
-  font-size: 20px;
-  line-height: 1.6;
-  color: var(--text-secondary, #9898A6);
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--text-secondary);
   margin-bottom: 40px;
 }
 
@@ -701,69 +672,78 @@ a { text-decoration: none; color: inherit; }
 
 .hero-actions {
   display: flex;
-  gap: 16px;
-  justify-content: center;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
-.hero-screenshot {
-  width: 100%;
-  max-width: 800px;
-  animation: fadeInUp 0.6s 0.2s ease both;
+/* Terminal Window */
+.hero-terminal { width: 100%; }
+
+.terminal-window {
+  background: #1E1E2E;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-.window-chrome {
-  background: #1A1A2E;
-  border: 1px solid var(--border-default, #2A2A3A);
-  border-bottom: none;
-  border-radius: 12px 12px 0 0;
+.terminal-titlebar {
+  background: #2A2A3C;
   padding: 12px 16px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.dot {
+.t-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
   display: inline-block;
 }
 
-.dot-red { background: #EF4444; }
-.dot-yellow { background: #F59E0B; }
-.dot-green { background: #10B981; }
+.t-red { background: #FF5F57; }
+.t-yellow { background: #FFBD2E; }
+.t-green { background: #28C840; }
 
-.window-title {
-  margin-left: auto;
+.t-title {
+  margin-left: 8px;
   font-size: 13px;
-  color: var(--text-tertiary, #5C5C6E);
-  font-family: var(--font-mono, monospace);
+  color: #6B7280;
+  font-family: var(--font-mono);
 }
 
-.terminal {
-  background: #12121F;
-  border: 1px solid var(--border-default, #2A2A3A);
-  border-radius: 0 0 12px 12px;
-  padding: 24px;
-  overflow-x: auto;
+.terminal-body {
+  padding: 20px 24px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.9;
+  color: #D1D5DB;
 }
 
-.terminal-code {
-  font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: 13px;
-  line-height: 1.8;
-  color: var(--text-primary, #F5F5F7);
-  white-space: pre;
+.t-line { display: block; }
+.t-prompt { color: var(--purple-light); margin-right: 8px; }
+.t-cmd { color: #E5E7EB; }
+.t-muted { color: #4B5563; font-size: 12px; }
+.t-success { color: var(--green); }
+.t-indent { padding-left: 20px; color: #9CA3AF; }
+.t-indent2 { padding-left: 32px; }
+.t-key { color: var(--purple-light); }
+.t-str { color: #86EFAC; }
+.t-num { color: #FCD34D; }
+.t-cursor { color: var(--purple-light); animation: blink 1s step-end infinite; }
+.t-cursor-line { margin-top: 4px; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 /* ==================== Social Proof ==================== */
-.social-proof {
-  background: var(--bg-surface, #111118);
-  border-top: 1px solid var(--border-subtle, #1E1E2A);
-  border-bottom: 1px solid var(--border-subtle, #1E1E2A);
-  padding: 32px 24px;
-  animation: fadeInUp 0.6s 0.1s ease both;
+.proof {
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 32px;
 }
 
 .proof-inner {
@@ -782,23 +762,23 @@ a { text-decoration: none; color: inherit; }
   gap: 4px;
 }
 
-.proof-number {
-  font-size: 36px;
+.proof-num {
+  font-size: 32px;
   font-weight: 700;
-  color: var(--text-primary, #F5F5F7);
-  font-family: var(--font-mono, monospace);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
 }
 
 .proof-label {
   font-size: 14px;
-  color: var(--text-secondary, #9898A6);
+  color: var(--text-muted);
 }
 
 /* ==================== Section Shared ==================== */
 .section-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 32px;
 }
 
 .section-header {
@@ -809,107 +789,262 @@ a { text-decoration: none; color: inherit; }
 .section-title {
   font-size: clamp(28px, 4vw, 40px);
   font-weight: 700;
-  color: var(--text-primary, #F5F5F7);
-  margin-bottom: 16px;
-  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  letter-spacing: -1px;
 }
 
 .section-sub {
-  font-size: 18px;
-  color: var(--text-secondary, #9898A6);
+  font-size: 17px;
+  color: var(--text-secondary);
 }
 
 /* ==================== Features ==================== */
 .features {
-  padding: 96px 0;
-  animation: fadeInUp 0.6s ease both;
+  padding: 120px 0;
+  background: var(--bg);
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 
 .feature-card {
-  background: var(--bg-surface, #111118);
-  border: 1px solid var(--border-default, #2A2A3A);
-  border-radius: 16px;
-  padding: 32px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
   transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .feature-card:hover {
-  border-color: var(--brand-primary, #7C3AED);
-  box-shadow: 0 4px 24px rgba(124, 58, 237, 0.15), 0 1px 4px rgba(0, 0, 0, 0.4);
+  border-color: var(--purple);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.1);
   transform: translateY(-2px);
 }
 
-.feature-icon {
-  font-size: 32px;
+.feature-icon-wrap {
+  width: 48px;
+  height: 48px;
+  background: var(--purple-dim);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 4px;
 }
 
-.feature-title {
+.feature-icon {
   font-size: 22px;
-  font-weight: 600;
-  color: var(--text-primary, #F5F5F7);
+  line-height: 1;
+}
+
+.feature-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .feature-desc {
-  font-size: 16px;
-  color: var(--brand-primary, #7C3AED);
+  font-size: 14px;
+  color: var(--purple);
   font-weight: 500;
+  line-height: 1.5;
 }
 
 .feature-sub {
-  font-size: 14px;
-  color: var(--text-secondary, #9898A6);
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
 }
+
+/* ==================== Playground ==================== */
+.playground {
+  padding: 120px 0;
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.playground-window {
+  background: #1E1E2E;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.playground-body {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 340px;
+}
+
+.pg-sidebar {
+  background: #252536;
+  padding: 20px 16px;
+  border-right: 1px solid #2E2E42;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pg-sidebar-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 12px 8px 8px;
+  font-family: var(--font-mono);
+}
+
+.pg-usage-title { margin-top: 16px; }
+
+.pg-key {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: var(--font-mono);
+  color: #9CA3AF;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.pg-key:hover { background: #2E2E42; }
+
+.pg-key-active {
+  background: rgba(124, 58, 237, 0.2);
+  color: #E5E7EB;
+}
+
+.pg-key-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+}
+
+.pg-key-dot-inactive { background: #4B5563; }
+
+.pg-usage-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  font-size: 13px;
+  font-family: var(--font-mono);
+}
+
+.pg-usage-label { color: #6B7280; }
+.pg-usage-val { color: #E5E7EB; }
+.pg-usage-money { color: var(--green); }
+
+.pg-main {
+  padding: 20px 24px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.8;
+  color: #D1D5DB;
+}
+
+.pg-model-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.pg-label { color: #6B7280; }
+
+.pg-model-select {
+  background: #2E2E42;
+  border: 1px solid #3D3D52;
+  border-radius: 6px;
+  padding: 4px 12px;
+  color: #E5E7EB;
+  font-size: 13px;
+}
+
+.pg-select-arrow { margin-left: 8px; color: #6B7280; }
+
+.pg-divider {
+  border-top: 1px solid #2E2E42;
+  margin: 12px 0;
+}
+
+.pg-section-label {
+  color: #6B7280;
+  margin-bottom: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pg-code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.8;
+  color: #D1D5DB;
+  padding: 8px 0;
+}
+
+.pg-code-req { color: #9CA3AF; }
+
+.pg-status { color: var(--green); }
 
 /* ==================== Pricing ==================== */
 .pricing {
-  padding: 96px 0;
-  background: var(--bg-surface, #111118);
-  border-top: 1px solid var(--border-subtle, #1E1E2A);
-  border-bottom: 1px solid var(--border-subtle, #1E1E2A);
-  animation: fadeInUp 0.6s ease both;
+  padding: 120px 0;
+  background: var(--bg);
 }
 
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  margin-bottom: 56px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .pricing-card {
-  background: var(--bg-base, #0A0A0F);
-  border: 1px solid var(--border-default, #2A2A3A);
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border);
   border-radius: 16px;
   padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   position: relative;
-  transition: border-color 200ms ease, box-shadow 200ms ease;
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.pricing-card:hover {
+  border-color: var(--border-bright);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
 }
 
 .pricing-card.recommended {
-  background: linear-gradient(145deg, #1E1E35, #1A1A2E);
-  border: 1px solid var(--brand-primary, #7C3AED);
-  box-shadow: 0 0 32px rgba(124, 58, 237, 0.2);
+  border: 2px solid var(--purple);
+  background: linear-gradient(180deg, #FAF5FF 0%, #FFFFFF 100%);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.12);
 }
 
 .badge-recommended {
   position: absolute;
-  top: -12px;
+  top: -13px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--brand-primary, #7C3AED);
+  background: var(--purple);
   color: #fff;
   font-size: 12px;
   font-weight: 600;
@@ -919,9 +1054,9 @@ a { text-decoration: none; color: inherit; }
 }
 
 .plan-name {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary, #F5F5F7);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
   text-align: center;
 }
 
@@ -933,28 +1068,23 @@ a { text-decoration: none; color: inherit; }
   gap: 2px;
 }
 
-.price-yen {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--text-primary, #F5F5F7);
-}
-
 .price-num {
-  font-size: 48px;
-  font-weight: 700;
-  color: var(--text-primary, #F5F5F7);
-  font-family: var(--font-mono, monospace);
+  font-size: 44px;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  letter-spacing: -1px;
 }
 
 .price-suffix {
   font-size: 14px;
-  color: var(--text-secondary, #9898A6);
+  color: var(--text-muted);
 }
 
 .plan-desc {
   text-align: center;
   font-size: 14px;
-  color: var(--text-secondary, #9898A6);
+  color: var(--text-muted);
 }
 
 .plan-features {
@@ -967,188 +1097,105 @@ a { text-decoration: none; color: inherit; }
 
 .plan-features li {
   font-size: 14px;
-  color: var(--text-secondary, #9898A6);
+  color: var(--text-secondary);
   padding-left: 20px;
   position: relative;
+  line-height: 1.5;
 }
 
 .plan-features li::before {
   content: '✓';
   position: absolute;
   left: 0;
-  color: var(--color-success, #10B981);
+  color: var(--green);
   font-size: 12px;
 }
 
-/* Model table */
-.model-table {
-  border: 1px solid var(--border-default, #2A2A3A);
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.model-table-title {
-  font-size: 18px;
+.btn-block {
+  display: block;
+  text-align: center;
+  padding: 12px 24px;
+  border-radius: 8px;
   font-weight: 600;
-  color: var(--text-primary, #F5F5F7);
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--border-default, #2A2A3A);
-}
-
-.table-wrapper { overflow-x: auto; }
-
-.model-pricing-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.model-pricing-table th {
-  background: var(--bg-elevated, #1C1C26);
-  color: var(--text-secondary, #9898A6);
-  font-size: 13px;
-  font-weight: 600;
-  text-align: left;
-  padding: 14px 24px;
-  border-bottom: 1px solid var(--border-default, #2A2A3A);
-}
-
-.model-pricing-table td {
-  padding: 14px 24px;
   font-size: 14px;
-  color: var(--text-primary, #F5F5F7);
-  border-bottom: 1px solid var(--border-subtle, #1E1E2A);
-  font-family: var(--font-mono, monospace);
+  transition: all 150ms ease;
+  margin-top: auto;
 }
-
-.model-pricing-table tr:last-child td { border-bottom: none; }
-.model-pricing-table tr:hover td { background: rgba(124, 58, 237, 0.04); }
 
 /* ==================== Quick Start ==================== */
 .quickstart {
-  padding: 96px 0;
-  animation: fadeInUp 0.6s ease both;
-}
-
-.steps-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
+  padding: 120px 0;
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.step-item {
   display: flex;
   flex-direction: column;
   gap: 0;
 }
 
-.step-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  position: relative;
-}
-
 .step-num {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--brand-primary, #7C3AED);
-  font-family: var(--font-mono, monospace);
-  min-width: 28px;
-  padding-top: 4px;
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--purple-dim);
+  font-family: var(--font-mono);
+  line-height: 1;
+  margin-bottom: 16px;
+  letter-spacing: -2px;
 }
 
-.step-content {
-  flex: 1;
-  padding-bottom: 32px;
+.step-body {
+  margin-bottom: 20px;
 }
 
-.step-icon { font-size: 28px; margin-bottom: 8px; }
+.step-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+  display: block;
+}
 
 .step-title {
   font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary, #F5F5F7);
+  font-weight: 700;
+  color: var(--text-primary);
   margin-bottom: 6px;
 }
 
 .step-desc {
   font-size: 14px;
-  color: var(--text-secondary, #9898A6);
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
-.step-arrow {
-  position: absolute;
-  right: -44px;
-  top: 8px;
-  font-size: 20px;
-  color: var(--border-strong, #3D3D52);
-}
-
-/* Code Block */
-.code-block {
-  background: #12121F;
-  border: 1px solid var(--border-default, #2A2A3A);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.code-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border-default, #2A2A3A);
-}
-
-.code-lang {
+.step-code-block {
+  background: #1E1E2E;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--text-tertiary, #5C5C6E);
-  font-family: var(--font-mono, monospace);
-}
-
-.copy-btn {
-  font-size: 12px;
-  background: rgba(124, 58, 237, 0.15);
-  color: var(--brand-primary, #7C3AED);
-  border: 1px solid rgba(124, 58, 237, 0.3);
-  border-radius: 6px;
-  padding: 4px 12px;
-  cursor: pointer;
-  font-family: var(--font-sans, sans-serif);
-  transition: all 200ms ease;
-}
-
-.copy-btn:hover {
-  background: rgba(124, 58, 237, 0.25);
-}
-
-.code-body {
-  padding: 24px;
-  font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: 13px;
   line-height: 1.8;
-  color: var(--text-primary, #F5F5F7);
-  white-space: pre;
-  overflow-x: auto;
+  color: #9CA3AF;
+  white-space: pre-wrap;
+  word-break: break-all;
   margin: 0;
 }
 
-/* Syntax Highlighting */
-.t-keyword { color: #C792EA; }
-.t-var { color: #82AAFF; }
-.t-fn { color: #82AAFF; }
-.t-str { color: #C3E88D; }
-.t-attr { color: #FFCB6B; }
-.t-comment { color: #546E7A; font-style: italic; }
+.t-comment { color: #6B7280; font-style: italic; }
 
 /* ==================== FAQ ==================== */
 .faq {
-  padding: 96px 0;
-  background: var(--bg-surface, #111118);
-  border-top: 1px solid var(--border-subtle, #1E1E2A);
-  border-bottom: 1px solid var(--border-subtle, #1E1E2A);
-  animation: fadeInUp 0.6s ease both;
+  padding: 120px 0;
+  background: var(--bg);
 }
 
 .faq-list {
@@ -1159,98 +1206,76 @@ a { text-decoration: none; color: inherit; }
 }
 
 .faq-item {
-  border-top: 1px solid var(--border-default, #2A2A3A);
+  border-top: 1px solid var(--border);
   cursor: pointer;
-  transition: background 200ms ease;
+  transition: background 150ms ease;
 }
 
-.faq-item:last-child { border-bottom: 1px solid var(--border-default, #2A2A3A); }
-.faq-item:hover { background: rgba(124, 58, 237, 0.03); }
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.faq-item:hover { background: var(--bg-hover); }
 
-.faq-question {
+.faq-item:first-child { border-radius: 8px 8px 0 0; overflow: hidden; }
+.faq-item:last-child { border-radius: 0 0 8px 8px; overflow: hidden; }
+
+.faq-q {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
   font-size: 16px;
-  font-weight: 500;
-  color: var(--text-primary, #F5F5F7);
+  font-weight: 600;
+  color: var(--text-primary);
   user-select: none;
+  gap: 16px;
 }
 
-.faq-item.open .faq-question { color: var(--brand-primary, #7C3AED); }
+.faq-item.open .faq-q { color: var(--purple); }
 
 .faq-toggle {
-  font-size: 20px;
-  color: var(--text-tertiary, #5C5C6E);
-  transition: transform 200ms ease;
+  font-size: 22px;
+  color: var(--text-muted);
   flex-shrink: 0;
-  margin-left: 16px;
+  font-weight: 400;
+  line-height: 1;
 }
 
-.faq-answer {
+.faq-a {
   padding-bottom: 20px;
   font-size: 15px;
   line-height: 1.7;
-  color: var(--text-secondary, #9898A6);
+  color: var(--text-secondary);
   animation: fadeIn 200ms ease both;
 }
 
 /* ==================== Footer CTA ==================== */
 .footer-cta {
-  position: relative;
-  padding: 96px 24px;
+  padding: 100px 32px;
   text-align: center;
-  overflow: hidden;
-  border-top: 1px solid var(--border-subtle, #1E1E2A);
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--border);
 }
 
-.cta-glow-left, .cta-glow-right {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.cta-glow-left {
-  left: -100px;
-  bottom: -100px;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, transparent 70%);
-}
-
-.cta-glow-right {
-  right: -100px;
-  top: -100px;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, transparent 70%);
-}
-
-.cta-inner { position: relative; z-index: 1; }
+.cta-inner { max-width: 600px; margin: 0 auto; }
 
 .cta-title {
   font-size: clamp(32px, 5vw, 48px);
   font-weight: 800;
-  color: var(--text-primary, #F5F5F7);
-  margin-bottom: 16px;
-  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  letter-spacing: -1.5px;
 }
 
 .cta-sub {
-  font-size: 18px;
-  color: var(--text-secondary, #9898A6);
-  margin-bottom: 40px;
-}
-
-.btn-cta {
-  padding: 18px 48px;
   font-size: 17px;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
 }
 
 /* ==================== Footer ==================== */
 .footer {
-  background: var(--bg-base, #0A0A0F);
-  border-top: 1px solid var(--border-default, #2A2A3A);
-  padding: 64px 24px 32px;
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--border);
+  padding: 64px 32px 32px;
 }
 
 .footer-inner {
@@ -1262,7 +1287,11 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 48px;
 }
 
-.footer-brand { display: flex; flex-direction: column; gap: 16px; }
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
 .footer-logo {
   display: flex;
@@ -1272,23 +1301,8 @@ a { text-decoration: none; color: inherit; }
 
 .footer-tagline {
   font-size: 14px;
-  color: var(--text-secondary, #9898A6);
-  max-width: 200px;
+  color: var(--text-muted);
 }
-
-.footer-socials {
-  display: flex;
-  gap: 16px;
-  margin-top: 8px;
-}
-
-.social-link {
-  font-size: 20px;
-  color: var(--text-secondary, #9898A6);
-  transition: color 200ms ease;
-}
-
-.social-link:hover { color: var(--brand-primary, #7C3AED); }
 
 .footer-links {
   display: grid;
@@ -1299,7 +1313,7 @@ a { text-decoration: none; color: inherit; }
 .footer-col-title {
   font-size: 13px;
   font-weight: 600;
-  color: var(--text-primary, #F5F5F7);
+  color: var(--text-primary);
   margin-bottom: 16px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -1309,37 +1323,29 @@ a { text-decoration: none; color: inherit; }
 
 .footer-link {
   font-size: 14px;
-  color: var(--text-secondary, #9898A6);
-  transition: color 200ms ease;
+  color: var(--text-muted);
+  transition: color 150ms ease;
 }
 
-.footer-link:hover { color: var(--text-primary, #F5F5F7); }
+.footer-link:hover { color: var(--purple); }
 
 .footer-bottom {
   max-width: 1200px;
   margin: 0 auto;
   padding-top: 24px;
-  border-top: 1px solid var(--border-subtle, #1E1E2A);
+  border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 13px;
-  color: var(--text-tertiary, #5C5C6E);
+  color: var(--text-muted);
   flex-wrap: wrap;
   gap: 12px;
 }
 
-.footer-legal {
-  display: flex;
-  gap: 24px;
-}
-
-.footer-legal a {
-  color: var(--text-tertiary, #5C5C6E);
-  transition: color 200ms ease;
-}
-
-.footer-legal a:hover { color: var(--text-secondary, #9898A6); }
+.footer-legal { display: flex; gap: 24px; }
+.footer-legal a { color: var(--text-muted); transition: color 150ms ease; }
+.footer-legal a:hover { color: var(--text-secondary); }
 
 /* ==================== Animations ==================== */
 @keyframes fadeIn {
@@ -1348,81 +1354,67 @@ a { text-decoration: none; color: inherit; }
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ==================== Responsive ==================== */
 @media (max-width: 1024px) {
-  .hero-inner { gap: 48px; }
-  .pricing-grid { gap: 16px; }
-  .steps-layout { grid-template-columns: 1fr; }
-  .step-arrow { display: none; }
-  .footer-inner { grid-template-columns: 1fr; gap: 40px; }
-  .footer-links { grid-template-columns: repeat(3, 1fr); }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .playground-body { grid-template-columns: 1fr; }
+  .pg-sidebar { flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid #2E2E42; padding: 12px; gap: 8px; }
+  .pg-sidebar-title { padding: 4px 8px; width: auto; }
+  .pg-key { padding: 4px 8px; }
+  .pg-usage-title { margin-top: 0; }
+  .pg-usage-row { padding: 4px 8px; }
+}
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; padding-top: 120px; padding-bottom: 80px; }
+  .hero-terminal { display: none; }
+  .br-desktop { display: none; }
+  .steps { grid-template-columns: 1fr; gap: 32px; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
 }
 
 @media (max-width: 768px) {
   .nav-links {
     display: none;
     position: fixed;
-    top: 72px;
+    top: 64px;
     left: 0;
     right: 0;
-    background: rgba(10, 10, 15, 0.97);
+    background: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(16px);
     flex-direction: column;
-    padding: 24px;
-    gap: 20px;
-    border-bottom: 1px solid var(--border-default, #2A2A3A);
+    padding: 20px 24px 24px;
+    gap: 4px;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   }
-
   .nav-links.open { display: flex; }
-
-  .nav-signin { margin-left: 0; }
   .hamburger { display: flex; }
+  .nav-signin { margin-left: 0; }
 
-  .hero { padding-top: 120px; padding-bottom: 64px; }
-  .hero-glow { width: 300px; height: 300px; right: -80px; }
-
-  .hero-actions { flex-direction: column; align-items: center; }
-  .btn-lg { padding: 14px 28px; font-size: 15px; }
-
-  .br-desktop { display: none; }
-
-  .proof-inner { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .proof-number { font-size: 28px; }
-
-  .features { padding: 64px 0; }
+  .proof-inner { grid-template-columns: repeat(2, 1fr); }
+  .features { padding: 80px 0; }
   .features-grid { grid-template-columns: 1fr; }
-
-  .pricing { padding: 64px 0; }
-  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
-
-  .quickstart { padding: 64px 0; }
-  .steps-layout { grid-template-columns: 1fr; }
-
-  .faq { padding: 64px 0; }
-
-  .footer-cta { padding: 64px 24px; }
-
-  .footer-links { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-
-  .footer-bottom {
-    flex-direction: column;
-    text-align: center;
-    gap: 8px;
-  }
+  .playground { padding: 80px 0; }
+  .pricing { padding: 80px 0; }
+  .quickstart { padding: 80px 0; }
+  .faq { padding: 80px 0; }
+  .footer-cta { padding: 80px 32px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+  .footer-links { grid-template-columns: repeat(2, 1fr); }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
+  .hero-title { font-size: 36px; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 480px) {
+  .features-grid { grid-template-columns: 1fr; }
   .footer-links { grid-template-columns: 1fr; }
   .proof-inner { grid-template-columns: repeat(2, 1fr); }
 }
+
 </style>
