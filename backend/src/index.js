@@ -45,3 +45,4 @@ app.use((err, req, res, next) => {
 app.listen(config.port, () => {
   console.log(`TokenProxy backend running on http://localhost:${config.port}`);
 });
+
