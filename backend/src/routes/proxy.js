@@ -23,6 +23,7 @@ router.post('/chat/completions', async (req, res) => {
   const model = req.body?.model;
   const userId = req.user.id;
   const apiKeyId = req.apiKey.id;
+  const subKeyId = req.apiKey.isSubKey ? req.apiKey.subKeyId : null;
   const requestBody = req.body;
 
   // 验证模型是否启用
@@ -72,7 +73,7 @@ router.post('/chat/completions', async (req, res) => {
 
       // 流结束后记录（不精确但可接受）
       upstreamRes.data.on('end', () => {
-        recordUsage({ userId, apiKeyId, model, usage: null, latencyMs, requestBody, responseStatus });
+        recordUsage({ userId, apiKeyId, subKeyId, model, usage: null, latencyMs, requestBody, responseStatus });
       });
     } else {
       if (upstreamRes.status >= 400) {
@@ -80,7 +81,7 @@ router.post('/chat/completions', async (req, res) => {
       }
 
       if (usage) {
-        recordUsage({ userId, apiKeyId, model, usage, latencyMs, requestBody, responseStatus });
+        recordUsage({ userId, apiKeyId, subKeyId, model, usage, latencyMs, requestBody, responseStatus });
       }
 
       return res.status(upstreamRes.status).json(upstreamRes.data);
@@ -91,7 +92,7 @@ router.post('/chat/completions', async (req, res) => {
     console.error('Proxy error:', err.message);
 
     recordUsage({
-      userId, apiKeyId, model,
+      userId, apiKeyId, subKeyId, model,
       usage: null, latencyMs,
       requestBody,
       responseStatus: err.response?.status || 500,

@@ -32,16 +32,42 @@
     <section class="hero">
       <div class="hero-inner">
         <div class="hero-left">
-          <div class="hero-pretitle">// 无需翻墙，接入全球 AI 模型</div>
-          <h1 class="hero-title">3 步接入<br />GPT-4 / Claude / Gemini</h1>
-          <p class="hero-sub">一个 API Key，访问所有主流大模型。<br /><strong>GPT-4o 官方价 8 折</strong>，稳定、简单、无隐藏费用。</p>
+          <div class="hero-pretitle">// 中文市场 · 稳定低价 AI API 代理</div>
+          <h1 class="hero-title">
+            稳定 · 低价 · 快速<br />
+            <span class="hero-title-accent">接入全球顶尖 AI 模型</span>
+          </h1>
+          <p class="hero-sub">
+            无需翻墙，一个 API Key 直连 OpenAI · Claude · DeepSeek · Gemini<br />
+            官方价格 <strong>8 折起</strong>，国内直连，秒级响应
+          </p>
           <div class="hero-actions">
-            <a href="/auth/register" class="btn-primary btn-lg">免费注册，送 ¥10 体验金 →</a>
-            <a href="#quickstart" class="btn-ghost btn-lg">查看文档</a>
+            <a href="/auth/register" class="btn-primary btn-lg">立即开始 →</a>
+            <a href="#pricing" class="btn-ghost btn-lg">查看价格</a>
+          </div>
+          <div class="hero-trust">
+            <span class="trust-item"><span class="trust-dot"></span>国内直连</span>
+            <span class="trust-item"><span class="trust-dot"></span>1.2亿次/月调用</span>
+            <span class="trust-item"><span class="trust-dot"></span>99.9% 可用率</span>
           </div>
         </div>
         <div class="hero-right">
-          <div class="mac-window">
+          <!-- Model logos -->
+          <div class="model-showcase">
+            <div class="model-header">
+              <span class="model-header-title">支持的模型</span>
+              <span class="model-header-count">15+ 模型</span>
+            </div>
+            <div class="model-grid">
+              <div class="model-chip" v-for="m in modelLogos" :key="m.name">
+                <span class="model-logo" v-html="m.logo"></span>
+                <span class="model-name">{{ m.name }}</span>
+                <span class="model-price">{{ m.price }}</span>
+              </div>
+            </div>
+          </div>
+          <!-- Terminal window -->
+          <div class="mac-window hero-mac">
             <div class="mac-titlebar">
               <div class="mac-dots">
                 <span class="dot dot-red"></span>
@@ -71,6 +97,16 @@
                 <span>Today: <span class="t-num">1,247k</span></span>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <!-- Three core advantages -->
+      <div class="hero-advantages">
+        <div class="advantage-item" v-for="adv in advantages" :key="adv.title">
+          <span class="advantage-icon" v-html="adv.icon"></span>
+          <div class="advantage-text">
+            <span class="advantage-title">{{ adv.title }}</span>
+            <span class="advantage-sub">{{ adv.sub }}</span>
           </div>
         </div>
       </div>
@@ -295,6 +331,57 @@ const proofItems = [
   { number: '15+', label: '支持模型' },
 ]
 
+const modelLogos = [
+  {
+    name: 'OpenAI',
+    price: 'GPT-4o 8折',
+    logo: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073z" fill="#10A37F"/></svg>`,
+  },
+  {
+    name: 'Claude',
+    price: 'Claude 3.5 9折',
+    logo: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#CC785C"/><path d="M12 6C8.686 6 6 8.686 6 12s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" fill="white"/></svg>`,
+  },
+  {
+    name: 'DeepSeek',
+    price: 'DeepSeek 8折',
+    logo: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#1A1A2E"/><path d="M12 7l5 9H7l5-9z" fill="#00D4FF"/><circle cx="12" cy="14" r="3" fill="#00D4FF"/></svg>`,
+  },
+  {
+    name: 'Gemini',
+    price: 'Gemini 9折',
+    logo: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#8E1FC3"/><path d="M7 12h10M12 7v10" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>`,
+  },
+  {
+    name: 'Groq',
+    price: '极速推理',
+    logo: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#2D2D2D"/><path d="M6 12h12M12 8v8" stroke="#FF6B35" stroke-width="2" stroke-linecap="round"/></svg>`,
+  },
+  {
+    name: 'Mistral',
+    price: '欧洲最强',
+    logo: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#FF6B35"/><text x="5" y="17" font-size="12" font-weight="700" fill="white" font-family="sans-serif">M</text></svg>`,
+  },
+]
+
+const advantages = [
+  {
+    title: '国内直连',
+    sub: '无需 VPN，开箱即用',
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
+  },
+  {
+    title: '低价透明',
+    sub: '官方价格 8 折起',
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+  },
+  {
+    title: '秒级响应',
+    sub: '多节点智能路由',
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+  },
+]
+
 const features = [
   {
     title: '无需 VPN',
@@ -455,15 +542,58 @@ a { text-decoration: none; color: inherit; }
 
 /* ==================== Hero ==================== */
 .hero {
-  padding: 160px 64px 120px;
+  padding: 160px 64px 0;
   max-width: 1280px;
   margin: 0 auto;
 }
-.hero-inner { display: grid; grid-template-columns: 55fr 45fr; gap: 80px; align-items: center; }
+.hero-inner { display: grid; grid-template-columns: 55fr 45fr; gap: 80px; align-items: start; }
 .hero-pretitle { font-family: var(--font-mono); font-size: 14px; color: var(--text-muted); font-weight: 500; margin-bottom: 24px; }
-.hero-title { font-size: 72px; font-weight: 700; color: var(--text); line-height: 1.1; margin-bottom: 24px; letter-spacing: -2px; }
-.hero-sub { font-size: 20px; line-height: 1.4; color: var(--text-sec); margin-bottom: 48px; }
-.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-title { font-size: 68px; font-weight: 700; color: var(--text); line-height: 1.15; margin-bottom: 24px; letter-spacing: -2px; }
+.hero-title-accent { color: var(--purple); }
+.hero-sub { font-size: 18px; line-height: 1.6; color: var(--text-sec); margin-bottom: 36px; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+
+/* Trust strip */
+.hero-trust { display: flex; gap: 20px; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); font-weight: 500; }
+.trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+
+/* Model showcase */
+.model-showcase {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.model-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.model-header-title { font-size: 13px; font-weight: 600; color: var(--text); }
+.model-header-count { font-size: 12px; color: var(--text-muted); font-family: var(--font-mono); }
+.model-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+.model-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 12px;
+  background: var(--bg);
+  cursor: default;
+  transition: background 200ms ease;
+}
+.model-chip:hover { background: #FAF5FF; }
+.model-logo { display: flex; align-items: center; justify-content: center; }
+.model-name { font-size: 12px; font-weight: 600; color: var(--text); }
+.model-price { font-size: 11px; color: var(--green); font-family: var(--font-mono); }
+
+/* Hero mac window */
+.hero-mac { margin-top: 0; }
 
 /* Mac Window */
 .mac-window { background: var(--bg-dark-shell); border-radius: 12px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
@@ -491,7 +621,31 @@ a { text-decoration: none; color: inherit; }
 .t-statusbar { display: flex; gap: 16px; font-size: 13px; color: #71717A; }
 .t-sep { color: #3F3F46; }
 
-/* ==================== Social Proof Bar ==================== */
+/* Hero advantages bar */
+.hero-advantages {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 48px;
+  margin-bottom: 0;
+}
+.advantage-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 24px;
+  background: var(--bg);
+  transition: background 200ms ease;
+}
+.advantage-item:hover { background: #FAF5FF; }
+.advantage-icon { color: var(--purple); flex-shrink: 0; }
+.advantage-text { display: flex; flex-direction: column; gap: 2px; }
+.advantage-title { font-size: 14px; font-weight: 600; color: var(--text); }
+.advantage-sub { font-size: 12px; color: var(--text-muted); }
 .proof-bar { background: var(--bg-subtle); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 48px 64px; }
 .proof-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); }
 .proof-item { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 0 24px; border-right: 1px solid var(--border); }
@@ -611,9 +765,12 @@ a { text-decoration: none; color: inherit; }
 
 /* ==================== Responsive ==================== */
 @media (max-width: 1024px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-  .hero { padding: 140px 48px 80px; }
-  .hero-title { font-size: 56px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero { padding: 140px 48px 0; }
+  .hero-title { font-size: 52px; }
+  .hero-right { order: -1; }
+  .model-grid { grid-template-columns: repeat(6, 1fr); }
+  .hero-advantages { grid-template-columns: repeat(3, 1fr); }
   .proof-bar { padding: 40px 48px; }
   .section-inner { padding: 0 48px; }
   .proof-inner { grid-template-columns: repeat(3, 1fr); row-gap: 32px; }
@@ -634,10 +791,13 @@ a { text-decoration: none; color: inherit; }
   .nav-inner { padding: 0 24px; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
-  .hero { padding: 120px 24px 64px; }
-  .hero-title { font-size: 40px; }
+  .hero { padding: 120px 24px 0; }
+  .hero-title { font-size: 38px; }
   .hero-left { order: 1; }
   .hero-right { order: 2; }
+  .model-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero-advantages { grid-template-columns: 1fr; gap: 0; }
+  .advantage-item { padding: 16px 20px; }
   .proof-bar { padding: 40px 24px; }
   .proof-number { font-size: 36px; }
   .section-inner { padding: 0 24px; }
@@ -659,6 +819,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 @media (max-width: 480px) {
+  .model-grid { grid-template-columns: repeat(2, 1fr); }
   .proof-inner { grid-template-columns: repeat(2, 1fr); }
   .proof-item { border-right: none !important; border-top: 1px solid var(--border) !important; }
   .proof-item:nth-child(1), .proof-item:nth-child(2) { border-top: none !important; }

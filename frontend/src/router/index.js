@@ -35,6 +35,7 @@ const routes = [
     children: [
       { path: 'dashboard', name: 'Dashboard', component: () => import('../views/Dashboard.vue') },
       { path: 'keys', name: 'Keys', component: () => import('../views/Keys.vue') },
+      { path: 'subkeys', name: 'SubKeys', component: () => import('../views/SubKeys.vue') },
       { path: 'usage', name: 'Usage', component: () => import('../views/Usage.vue') },
       { path: 'pricing', name: 'Pricing', component: () => import('../views/Pricing.vue') },
       { path: 'recharge', name: 'Recharge', component: () => import('../views/Recharge.vue') },

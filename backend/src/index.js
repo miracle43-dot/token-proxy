@@ -9,6 +9,7 @@ import keysRoutes from './routes/keys.js';
 import modelsRoutes from './routes/models.js';
 import rechargeRoutes from './routes/recharge.js';
 import proxyRoutes from './routes/proxy.js';
+import subkeysRoutes from './routes/subkeys.js';
 
 // 初始化数据库
 initDB();
@@ -24,6 +25,7 @@ app.use('/api/user', userRoutes);
 app.use('/api/keys', keysRoutes);
 app.use('/api/models', modelsRoutes);
 app.use('/api/recharge', rechargeRoutes);
+app.use('/api/subkeys', subkeysRoutes);
 
 // OpenAI 兼容代理接口
 app.use('/v1', proxyRoutes);
