@@ -12,6 +12,21 @@ const routes = [
     name: 'Landing',
     component: () => import('../views/Landing.vue'),
   },
+  {
+    path: '/features',
+    name: 'Features',
+    component: () => import('../views/Features.vue'),
+  },
+  {
+    path: '/changelog',
+    name: 'Changelog',
+    component: () => import('../views/Changelog.vue'),
+  },
+  {
+    path: '/status',
+    name: 'Status',
+    component: () => import('../views/Status.vue'),
+  },
 
   // Auth pages (public, redirects to dashboard if already logged in)
   {
