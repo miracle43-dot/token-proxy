@@ -105,7 +105,7 @@
                 @click="copyKey(sk)"
                 circle
               >
-                <el-icon><Copy /></el-icon>
+                <el-icon><CopyDocument /></el-icon>
               </el-button>
             </div>
           </div>

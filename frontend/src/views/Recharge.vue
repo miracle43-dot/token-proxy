@@ -1084,3 +1084,4 @@ onUnmounted(() => {
   border-top: 1px solid var(--border-subtle);
   padding: 16px 20px;
 }
+</style>
