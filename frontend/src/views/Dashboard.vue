@@ -1,25 +1,25 @@
 <template>
   <div class="dashboard">
     <el-row :gutter="16" class="stat-cards">
-      <el-col :span="6">
+      <el-col :xs="24" :sm="12" :md="6">
         <div class="stat-card balance-card">
           <div class="stat-label">账户余额</div>
           <div class="stat-value">¥{{ stats.balance?.toFixed(2) ?? '—' }}</div>
         </div>
       </el-col>
-      <el-col :span="6">
+      <el-col :xs="24" :sm="12" :md="6">
         <div class="stat-card">
           <div class="stat-label">累计消费</div>
           <div class="stat-value">¥{{ stats.total?.total_cost?.toFixed(4) ?? '—' }}</div>
         </div>
       </el-col>
-      <el-col :span="6">
+      <el-col :xs="24" :sm="12" :md="6">
         <div class="stat-card">
           <div class="stat-label">总调用次数</div>
           <div class="stat-value">{{ stats.total?.total_calls ?? 0 }}</div>
         </div>
       </el-col>
-      <el-col :span="6">
+      <el-col :xs="24" :sm="12" :md="6">
         <div class="stat-card">
           <div class="stat-label">累计 Tokens</div>
           <div class="stat-value">{{ (stats.total?.total_tokens ?? 0).toLocaleString() }}</div>
@@ -28,7 +28,7 @@
     </el-row>
 
     <el-row :gutter="16" style="margin-top: 16px;">
-      <el-col :span="12">
+      <el-col :xs="24" :sm="24" :md="12">
         <el-card class="dark-card">
           <template #header><span class="card-title">近30天概览</span></template>
           <div class="month-stats">
@@ -47,7 +47,7 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :span="12">
+      <el-col :xs="24" :sm="24" :md="12">
         <el-card class="dark-card">
           <template #header><span class="card-title">快速开始</span></template>
           <el-space direction="vertical" style="width:100%">
@@ -70,7 +70,7 @@
     </el-row>
 
     <el-row style="margin-top: 16px;">
-      <el-col :span="24">
+      <el-col :xs="24" :sm="24" :md="24">
         <el-card class="dark-card">
           <template #header><span class="card-title">各模型消费排名</span></template>
           <el-table :data="stats.by_model || []" class="dark-table">
@@ -247,5 +247,30 @@ onMounted(async () => {
 }
 :deep(.dark-table td) {
   border-bottom: 1px solid var(--border-subtle) !important;
+}
+
+/* ============================================================
+   Mobile Responsive
+   ============================================================ */
+@media (max-width: 767px) {
+  .stat-card {
+    padding: 16px;
+  }
+
+  .stat-value {
+    font-size: var(--text-xl);
+  }
+
+  .main-stats {
+    gap: 12px;
+  }
+
+  .month-item {
+    padding: 6px 0;
+  }
+
+  .month-value {
+    font-size: var(--text-base);
+  }
 }
 </style>

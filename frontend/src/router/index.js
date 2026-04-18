@@ -40,6 +40,7 @@ const routes = [
       { path: 'pricing', name: 'Pricing', component: () => import('../views/Pricing.vue') },
       { path: 'recharge', name: 'Recharge', component: () => import('../views/Recharge.vue') },
       { path: 'playground', name: 'Playground', component: () => import('../views/Playground.vue') },
+      { path: 'settings', name: 'Settings', component: () => import('../views/Settings.vue') },
     ],
   },
 ];

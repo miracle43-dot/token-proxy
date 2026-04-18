@@ -1,5 +1,6 @@
 <template>
   <el-container class="layout">
+    <!-- Desktop Sidebar -->
     <el-aside width="220px" class="sidebar">
       <div class="logo">TokenProxy</div>
       <el-menu
@@ -65,6 +66,30 @@
         <router-view />
       </el-main>
     </el-container>
+
+    <!-- Mobile Bottom Tab Bar -->
+    <nav class="bottom-tab-bar">
+      <router-link to="/dashboard" class="tab-item" :class="{ active: $route.path === '/dashboard' }">
+        <el-icon><Odometer /></el-icon>
+        <span>首页</span>
+      </router-link>
+      <router-link to="/keys" class="tab-item" :class="{ active: $route.path === '/keys' }">
+        <el-icon><Key /></el-icon>
+        <span>Keys</span>
+      </router-link>
+      <router-link to="/recharge" class="tab-item" :class="{ active: $route.path === '/recharge' }">
+        <el-icon><Coin /></el-icon>
+        <span>充值</span>
+      </router-link>
+      <router-link to="/usage" class="tab-item" :class="{ active: $route.path === '/usage' }">
+        <el-icon><DataLine /></el-icon>
+        <span>用法</span>
+      </router-link>
+      <router-link to="/settings" class="tab-item" :class="{ active: $route.path === '/settings' }">
+        <el-icon><Setting /></el-icon>
+        <span>设置</span>
+      </router-link>
+    </nav>
   </el-container>
 </template>
 
@@ -204,5 +229,87 @@ function handleCommand(cmd) {
   padding: 24px 32px;
   background: var(--bg-base);
   min-height: calc(100vh - 60px);
+}
+
+/* ============================================================
+   Mobile Bottom Tab Bar
+   ============================================================ */
+.bottom-tab-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  z-index: 100;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 10px;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.tab-item .el-icon {
+  font-size: 20px;
+}
+
+.tab-item.active,
+.tab-item.router-link-active {
+  color: var(--brand-primary);
+}
+
+/* ============================================================
+   Responsive — Mobile (< 768px)
+   ============================================================ */
+@media (max-width: 767px) {
+  .sidebar {
+    display: none;
+  }
+
+  .layout {
+    padding-bottom: 60px; /* space for tab bar */
+  }
+
+  .bottom-tab-bar {
+    display: flex;
+  }
+
+  .header {
+    padding: 0 16px;
+  }
+
+  .page-title {
+    font-size: var(--text-base);
+  }
+
+  .balance-tag {
+    font-size: var(--text-xs);
+    padding: 4px 8px;
+  }
+
+  .user-btn span,
+  .user-btn .el-icon {
+    display: none;
+  }
+
+  .user-btn {
+    padding: 6px 8px;
+    min-width: auto;
+  }
+
+  .main {
+    padding: 16px;
+  }
 }
 </style>

@@ -364,4 +364,37 @@ onMounted(fetchKeys);
   font-family: var(--font-mono);
   color: var(--key-visible);
 }
+
+/* ============================================================
+   Mobile Responsive
+   ============================================================ */
+@media (max-width: 767px) {
+  .key-card {
+    padding: 12px;
+  }
+
+  .key-display {
+    flex-wrap: wrap;
+  }
+
+
+  .key-value {
+    font-size: 11px;
+    flex: 1 1 100%;
+  }
+
+
+  .key-actions {
+    flex: 1 1 auto;
+  }
+
+  .key-meta {
+    gap: 12px;
+  }
+
+  .card-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
 </style>
