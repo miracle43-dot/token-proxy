@@ -58,7 +58,7 @@
         </el-form-item>
       </el-form>
       <div class="auth-footer">
-        已有账号？ <router-link to="/login">立即登录</router-link>
+        已有账号？ <router-link to="/auth/login">立即登录</router-link>
       </div>
     </el-card>
   </div>

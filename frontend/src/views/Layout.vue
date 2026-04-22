@@ -121,7 +121,7 @@ function toggleTheme() {
 function handleCommand(cmd) {
   if (cmd === 'logout') {
     userStore.logout();
-    router.push('/login');
+    router.push('/auth/login');
   } else if (cmd === 'toggle-theme') {
     toggleTheme();
   }
