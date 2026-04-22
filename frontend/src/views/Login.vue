@@ -47,7 +47,7 @@
         </el-form-item>
       </el-form>
       <div class="auth-footer">
-        还没有账号？ <router-link to="/register">立即注册</router-link>
+        还没有账号？ <router-link to="/auth/register">立即注册</router-link>
       </div>
     </el-card>
   </div>
