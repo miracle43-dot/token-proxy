@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { queryOne } from '../db/index.js';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'token-proxy-secret-key-change-in-production';
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
 
 export function generateToken(user) {
   return jwt.sign({ id: user.id, username: user.username }, JWT_SECRET, { expiresIn: '7d' });
