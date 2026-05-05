@@ -1,4 +1,7 @@
 {
   "name": "token-proxy",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dependencies": {
+    "@larksuiteoapi/node-sdk": "^1.61.1"
+  }
 }
